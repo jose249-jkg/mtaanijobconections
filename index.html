@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f1">
+  <meta name="description" content="Find trusted local fundis, home services and professionals near you across Kenya.">
+  <title>Mtaani Work Connections — good work, close to home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #202821;
+      --muted: #68716a;
+      --paper: #0dc7ce;
+      --white: #882525;
+      --line: #32d162;
+      --green: #235a43;
+      --green-dark: #0f2561;
+      --green-pale: #9cd89c;
+      --lime: #a8cf0c;
+      --coral: #ca3210;
+      --gold: #0c4e15;
+      --shadow: 0 18px 48px rgba(34, 45, 36, .09);
+      --radius: 9px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; }
+    .shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .site-header { height: 78px; display: flex; align-items: center; background: rgba(7, 51, 80, 0.97); border-bottom: 1px solid rgba(255,255,255,.14); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--lime); color: var(--green-dark); font: 800 16px 'Manrope', sans-serif; letter-spacing: 0; }
+    .brand-name { display: block; color: #d4a7a7; font: 800 14px/1.15 'Manrope', sans-serif; letter-spacing: 0; }
+    .brand-name span { display: block; color: var(--lime); }
+    .nav-links { display: flex; align-items: center; gap: 29px; margin-left: auto; }
+    .nav-link { padding: 10px 0; color: rgba(255,255,255,.82); font-size: 13px; font-weight: 600; transition: color .18s; }
+    .nav-link:hover, .nav-link.active { color: var(--lime); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-actions .button-quiet { color: #fff; border-color: rgba(255,255,255,.3); }
+    .nav-actions .button-quiet:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .nav-actions .button-primary { color: var(--green-dark); background: var(--lime); }
+    .nav-actions .button-primary:hover { background: #e6efbd; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border: 1px solid transparent; border-radius: 6px; padding: 0 17px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .18s, transform .18s, border-color .18s; }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { color: #fff; background: var(--green); }
+    .button-primary:hover { background: var(--green-dark); }
+    .button-quiet { color: var(--ink); background: transparent; border-color: var(--line); }
+    .button-quiet:hover { border-color: #a9b4a7; background: #fff; }
+    .button-white { color: var(--green-dark); background: #fff; }
+    .button-block { width: 100%; }
+    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.35); border-radius: 6px; color: #fff; background: transparent; cursor: pointer; font-size: 19px; }
+    .view[hidden] { display: none; }
+    .hero { padding: 67px 0 51px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 54px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: 0; }
+    .hero h1 { max-width: 580px; margin: 19px 0 17px; font-size: clamp(44px, 5vw, 66px); font-weight: 700; line-height: 1.06; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero-copy { max-width: 465px; margin-bottom: 27px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+    .search-box { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0; max-width: 620px; padding: 8px; border: 1px solid #e9e8df; border-radius: 8px; background: #fff; box-shadow: 0 12px 30px rgba(34,45,36,.08); }
+    .search-field { min-width: 0; padding: 4px 14px; }
+    .search-field + .search-field { border-left: 1px solid var(--line); }
+    .search-field label, .field label { display: block; margin-bottom: 3px; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .75px; }
+    .search-field select { width: 100%; min-height: 31px; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; font-weight: 600; }
+    .search-box .button { min-width: 105px; }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 17px; color: #717970; font-size: 12px; }
+    .hero-note strong { color: var(--green); }
+    .hero-note-mark { color: var(--coral); font-size: 17px; }
+    .hero-visual { min-height: 415px; position: relative; }
+    .hero-photo { position: absolute; inset: 4px 34px 0 18px; overflow: hidden; border-radius: 46% 46% 8px 8px; background: #e0d4bb; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 48% center; display: block; }
+    .hero-photo:after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(28,36,29,.32)); }
+    .sun-disc { position: absolute; z-index: -1; top: 1px; right: 1px; width: 136px; height: 136px; border-radius: 50%; background: var(--lime); }
+    .floating-card { position: absolute; z-index: 2; right: 0; bottom: 27px; width: 222px; padding: 15px; border: 1px solid rgba(32,40,33,.08); border-radius: 8px; background: white; box-shadow: var(--shadow); }
+    .floating-top { display: flex; align-items: center; gap: 11px; }
+    .avatar { display: grid; place-items: center; width: 41px; height: 41px; border-radius: 50%; color: var(--green-dark); background: var(--lime); font-weight: 800; }
+    .floating-card strong { display: block; font: 700 13px 'Manrope', sans-serif; }
+    .floating-card small { color: var(--muted); font-size: 11px; }
+    .stars { margin-top: 11px; color: #bb8d20; font-size: 12px; }
+    .stars span { color: var(--muted); }
+    .proof-chip { position: absolute; z-index: 2; left: 0; top: 55px; padding: 10px 13px; border: 1px solid rgba(32,40,33,.08); border-radius: 7px; color: var(--green-dark); background: white; box-shadow: var(--shadow); font-size: 11px; font-weight: 700; }
+    .proof-chip b { margin-right: 5px; color: var(--coral); }
+    .section { padding: 63px 0; }
+    .section-white { background: #fff; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 27px; }
+    .section-kicker { margin-bottom: 7px; color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.1px; }
+    .section-title { margin-bottom: 0; font-size: 29px; line-height: 1.2; font-weight: 700; }
+    .text-link { color: var(--green); font-size: 13px; font-weight: 700; }
+    .text-link:hover { text-decoration: underline; }
+    .category-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .category-tile { min-height: 121px; padding: 17px 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: #fff; text-align: left; cursor: pointer; transition: border-color .2s, transform .2s, background .2s; }
+    .category-tile:hover { transform: translateY(-3px); border-color: #a3b9a3; background: #f5f8f2; }
+    .category-icon { display: block; margin-bottom: 14px; font-size: 24px; }
+    .category-tile strong { display: block; font-size: 12px; }
+    .category-tile small { color: var(--muted); font-size: 10px; }
+    .providers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .provider-card { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; transition: transform .2s, box-shadow .2s; }
+    .provider-card:hover { transform: translateY(-3px); box-shadow: 0 13px 26px rgba(34,45,36,.08); }
+    .provider-cover { height: 150px; position: relative; overflow: hidden; background: #dfe5d9; }
+    .provider-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .provider-card:hover .provider-cover img { transform: scale(1.035); }
+    .verified { position: absolute; left: 12px; top: 12px; padding: 5px 8px; border-radius: 4px; color: var(--green-dark); background: white; font-size: 10px; font-weight: 700; }
+    .provider-body { padding: 15px; }
+    .provider-type { margin-bottom: 5px; color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; }
+    .provider-name { margin-bottom: 5px; font-size: 16px; font-weight: 700; }
+    .provider-meta { display: flex; 
+        flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 11px; }
+    .provider-meta .rating { color: #9a741d; }
+    .provider-actions { display: flex;
+         gap: 8px; margin-top: 16px; }
+    .provider-actions .button { flex: 1; min-height: 38px; 
+        padding: 0 10px; font-size: 11px; }
+    .promotion-card { border-color: #bbcca9; background: #f1f5eb; }
+    .promotion-tag { display: inline-block; margin-bottom: 9px; padding: 4px 7px; border-radius: 4px; color: var(--green-dark); background: var(--lime); font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; }
+    .promotion-skill { margin: 8px 0; color: var(--green); font-size: 12px; font-weight: 700; }
+    .provider-view { width: 100%; margin-top: 8px; padding: 7px 0 0; border: 0; color: var(--green); background: transparent; text-align: left; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .provider-view:hover { text-decoration: underline; }
+    .profile-dialog { width: min(620px, calc(100% - 28px)); max-height: min(90vh, 780px); padding: 0; overflow: auto; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; box-shadow: var(--shadow); }
+    .profile-dialog::backdrop { background: rgba(20, 35, 26, .68); backdrop-filter: blur(3px); }
+    .profile-cover { height: 225px; position: relative; background: #dfe5d9; }
+    .profile-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .profile-close { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%; color: var(--ink); background: #fff; font-size: 22px; cursor: pointer; }
+    .profile-body { padding: 22px; }
+    .profile-body h2 { margin: 3px 0 8px; font-size: 24px; }
+    .profile-description { margin: 17px 0; color: var(--muted); font-size: 13px; white-space: pre-line; }
+    .profile-promotion { margin: 16px 0; padding: 13px; border-left: 3px solid var(--green); background: #f1f5eb; }
+    .profile-promotion strong { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: 13px; }
+    .profile-promotion p { margin: 0; color: var(--muted); font-size: 12px; white-space: pre-line; }
+    .empty-state { grid-column: 1 / -1; padding: 42px 20px; border: 1px dashed #bdc8b9; border-radius: 8px; color: var(--muted); background: rgba(255,255,255,.65); text-align: center; }
+    .trust-band { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; padding: 36px; border-radius: 9px; color: #fff; background: var(--green-dark); }
+    .trust-band h2 { margin: 8px 0 10px; font-size: 27px; }
+    .trust-band p { max-width: 450px; margin-bottom: 0; color: #d8e2d8; font-size: 13px; }
+    .trust-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .trust-item { display: flex; gap: 10px; align-items: flex-start; color: #f2f4ec; font-size: 12px; }
+    .trust-item b { color: var(--lime); font-size: 16px; line-height: 1.2; }
+    .cta-strip { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 31px 0; }
+    .cta-strip h2 { margin-bottom: 5px; font-size: 21px; }
+    .cta-strip p { margin: 0; color: var(--muted); font-size: 13px; }
+    .page-top { padding: 54px 0 38px; border-bottom: 1px solid var(--line); background: #f0f2e9; }
+    .page-top h1 { margin: 8px 0; font-size: 39px; line-height: 1.15; }
+    .page-top p { max-width: 590px; margin: 0; color: var(--muted); }
+    .directory-tools { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr auto; gap: 12px; align-items: end; margin-bottom: 25px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 43px; padding: 10px 11px; border: 1px solid #dfe2d9; border-radius: 5px; outline: none; color: var(--ink); background: #fff; font-size: 13px; }
+    .field textarea { min-height: 100px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #78957c; box-shadow: 0 0 0 3px rgba(35,90,67,.09); }
+    .results-line { display: flex; justify-content: space-between; align-items: center; margin: 0 0 14px; color: var(--muted); font-size: 12px; }
+    .form-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 55px; align-items: start; }
+    .form-aside { position: sticky; top: 105px; padding: 26px; border-radius: 8px; color: #fff; background: var(--green-dark); }
+    .form-aside h2 { margin: 8px 0 12px; font-size: 26px; }
+    .form-aside p { color: #d8e2d8; font-size: 13px; }
+    .form-aside ul { display: grid; gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; color: #f1f4ec; font-size: 12px; }
+    .form-aside li:before { content: '✓'; margin-right: 9px; color: var(--lime); font-weight: 800; }
+    .form-panel { padding: 25px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .form-panel h2 { margin-bottom: 5px; font-size: 21px; }
+    .form-subtitle { margin-bottom: 22px; color: var(--muted); font-size: 12px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-panel .button { margin-top: 19px; }
+    .dashboard-head { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 25px; }
+    .dashboard-head h2 { margin: 0; font-size: 23px; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
+    .stat-box { padding: 18px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+    .stat-box small { color: var(--muted); font-size: 11px; }
+    .stat-box strong { display: block; margin-top: 5px; font: 700 24px 'Manrope', sans-serif; }
+    .dashboard-panel { margin-top: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .dashboard-panel h3 { margin-bottom: 14px; font-size: 16px; }
+    .updates-list { display: grid; }
+    .update-row { display: grid; grid-template-columns: 118px 1fr auto; align-items: start; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .update-row:first-child { border-top: 1px solid var(--line); }
+    .update-date { color: var(--green); font-size: 11px; font-weight: 700; }
+    .update-kind { display: inline-block; margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+    th, td { padding: 11px 9px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    th { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .55px; }
+    .status-pill { display: inline-block; padding: 4px 7px; border-radius: 20px; color: #765d1b; background: #f8f0d9; font-size: 10px; font-weight: 700; }
+    .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; }
+    .contact-details { padding: 24px; border-radius: 8px; background: var(--green-dark); color: #fff; }
+    .contact-details h2 { font-size: 22px; }
+    .contact-details p { color: #d8e2d8; font-size: 13px; }
+    .contact-method { margin-top: 17px; font-size: 13px; }
+    .contact-method small { display: block; color: #cfddcf; font-size: 10px; text-transform: uppercase; letter-spacing: .7px; }
+    .footer { padding: 35px 0 24px; border-top: 1px solid var(--line); background: #f0f0e9; }
+    .footer-main { display: flex; justify-content: space-between; gap: 36px; padding-bottom: 25px; }
+    .footer-brand-copy { max-width: 270px; margin-top: 13px; color: var(--muted); font-size: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 23px; align-items: center; color: #576157; font-size: 12px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid #ddded5; color: #788078; font-size: 10px; }
+    .prototype-note { color: #777e72; }
+    .toast { position: fixed; z-index: 50; right: 22px; bottom: 22px; max-width: min(390px, calc(100% - 44px)); padding: 13px 17px; transform: translateY(20px); opacity: 0; border-radius: 6px; color: white; background: #263f30; box-shadow: var(--shadow); font-size: 13px; pointer-events: none; transition: .25s; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 17px; }
+      .hero-grid { gap: 28px; }
+      .hero-visual { min-height: 365px; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .directory-tools { grid-template-columns: 1fr 1fr; }
+      .form-layout { gap: 25px; }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 32px, 540px); }
+      .site-header { height: 67px; }
+      .nav-row { gap: 10px; }
+      .brand-mark { width: 35px; height: 35px; }
+      .brand-name { font-size: 12px; }
+      .menu-toggle { display: block; margin-left: auto; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 11px 20px 18px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .nav-links.open { display: grid; gap: 2px; border-color: rgba(255,255,255,.15); background: var(--green-dark); }
+      .nav-link { padding: 10px 0; }
+      .nav-actions { gap: 7px; }
+      .nav-actions .button { min-height: 37px; padding: 0 10px; font-size: 11px; }
+      .nav-actions .button-quiet { display: none; }
+      .hero { padding: 43px 0 35px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+      .hero h1 { max-width: 470px; margin-top: 15px; font-size: clamp(43px, 12vw, 58px); }
+      .hero-copy { margin-bottom: 20px; font-size: 14px; }
+      .search-box { grid-template-columns: 1fr 1fr; padding: 8px; }
+      .search-field { padding: 3px 8px; }
+      .search-field + .search-field { border-left: 0; }
+      .search-box .button { grid-column: 1 / -1; margin-top: 5px; }
+      .hero-visual { min-height: 310px; margin: 0 5px; }
+      .hero-photo { inset: 0 25px 0 17px; }
+      .sun-disc { width: 100px; height: 100px; }
+      .proof-chip { top: 35px; }
+      .floating-card { right: 0; bottom: 15px; width: 195px; padding: 12px; }
+      .section { padding: 43px 0; }
+      .section-head { align-items: start; margin-bottom: 19px; }
+      .section-title { font-size: 24px; }
+      .section-head > .text-link { white-space: nowrap; padding-top: 9px; font-size: 11px; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+      .category-tile { min-height: 105px; padding: 13px 11px; }
+      .category-icon { margin-bottom: 8px; }
+      .providers-grid { grid-template-columns: 1fr; gap: 13px; }
+      .provider-cover { height: 175px; }
+      .profile-cover { height: 175px; }
+      .profile-body { padding: 18px; }
+      .trust-band { grid-template-columns: 1fr; gap: 23px; padding: 24px 20px; }
+      .trust-band h2 { font-size: 23px; }
+      .trust-list { gap: 13px; }
+      .cta-strip { align-items: flex-start; flex-direction: column; padding: 25px 0; }
+      .page-top { padding: 39px 0 29px; }
+      .page-top h1 { font-size: 33px; }
+      .directory-tools { grid-template-columns: 1fr; gap: 11px; padding: 13px; }
+      .form-layout, .contact-layout { grid-template-columns: 1fr; gap: 18px; }
+      .form-aside { position: static; padding: 20px; }
+      .form-aside ul { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .form-panel { padding: 19px 15px; }
+      .form-grid { grid-template-columns: 1fr; gap: 12px; }
+      .form-grid .full { grid-column: auto; }
+      .dashboard-head { align-items: flex-start; }
+      .dashboard-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .stat-box { padding: 13px; }
+      .stat-box strong { font-size: 21px; }
+      .update-row { grid-template-columns: 1fr; gap: 6px; }
+      .footer-main, .footer-bottom { flex-direction: column; gap: 14px; }
+      .footer-links { gap: 13px 20px; }
+      .footer-bottom { padding-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="#home" aria-label="Mtaani Work Connections home" data-view-link="home">
+        <span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-view-link="home">Home</a>
+        <a class="nav-link" href="#find" data-view-link="find">Find a service</a>
+        <a class="nav-link" href="#how-it-works" data-scroll-link="how-it-works">How it works</a>
+        <a class="nav-link" href="#contact" data-view-link="contact">Contact</a>
+        <a class="nav-link" href="admindashboard.html">Admin login</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="button button-quiet" type="button" data-view-target="join">List your service</button>
+        <button class="button button-primary" type="button" data-view-target="account" id="account-button">Sign in</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="view" id="view-home">
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span> Your neighbourhood, better connected</span>
+            <h1>Good work,<br><em>close to home.</em></h1>
+            <p class="hero-copy">Find the right local professional for the things that keep life moving. Discover skilled people, compare services and get in touch directly.</p>
+            <form class="search-box" id="hero-search">
+              <div class="search-field"><label for="hero-location">Where</label><select id="hero-location" aria-label="Choose your location"></select></div>
+              <div class="search-field"><label for="hero-service">What do you need?</label><select id="hero-service" aria-label="Choose a service"></select></div>
+              <button class="button button-primary" type="submit">Find a fundi <span aria-hidden="true">→</span></button>
+            </form>
+            <div class="hero-note"><span class="hero-note-mark">✳</span> Local people. Real skills. <strong>One easy search.</strong></div>
+          </div>
+          <div class="hero-visual" aria-label="A local tradesperson at work">
+            <div class="sun-disc"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1100&q=85" alt="Electrician working on a home repair" fetchpriority="high"></div>
+            <div class="proof-chip"><b>✳</b> Made for your mtaa</div>
+            <div class="floating-card"><div class="floating-top"><div class="avatar">JM</div><div><strong>James Mwangi</strong><small>Electrician · Rongai</small></div></div><div class="stars">★★★★★ <span>Trusted by neighbours</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white" aria-labelledby="categories-title">
+        <div class="shell">
+          <div class="section-head"><div><p class="section-kicker">Good people for the jobs that matter</p><h2 class="section-title" id="categories-title">What do you need help with?</h2></div><a class="text-link" href="#find" data-view-link="find">Explore all services →</a></div>
+          <div class="category-grid" id="category-grid"></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="featured-title">
+        <div class="shell">
+          <div class="section-head"><div><p class="section-kicker">Sample profiles · demo content</p><h2 class="section-title" id="featured-title">Local pros worth knowing</h2></div><a class="text-link" href="#find" data-view-link="find">See all providers →</a></div>
+          <div class="providers-grid" id="featured-grid"></div>
+        </div>
+      </section>
+
+      <section class="section section-white" id="promoted-section" aria-labelledby="promoted-title" hidden>
+        <div class="shell"><div class="section-head"><div><p class="section-kicker">Featured local skills</p><h2 class="section-title" id="promoted-title">Available for work</h2></div></div><div class="providers-grid" id="promoted-grid"></div></div>
+      </section>
+
+      <section class="section section-white" aria-labelledby="updates-title">
+        <div class="shell"><div class="section-head"><div><p class="section-kicker">From around the neighbourhood</p><h2 class="section-title" id="updates-title">Upcoming work & community updates</h2></div></div><div class="updates-list" id="public-updates"></div></div>
+      </section>
+
+      <section class="section section-white" id="how-it-works">
+        <div class="shell"><div class="trust-band"><div><span class="eyebrow" style="color:var(--lime)"><span class="eyebrow-dot"></span> A little closer to home</span><h2>Good work travels by word of mouth.<br>Now it travels online, too.</h2><p>We make it easier to discover the skilled people already serving your neighbourhood. Connect directly, agree on the details, and keep local work local.</p></div><div class="trust-list"><div class="trust-item"><b>01</b><span>Choose a service and your area</span></div><div class="trust-item"><b>02</b><span>Compare local providers</span></div><div class="trust-item"><b>03</b><span>Call or WhatsApp directly</span></div><div class="trust-item"><b>04</b><span>Agree on the job together</span></div></div></div></div>
+      </section>
+      <section class="shell cta-strip"><div><h2>Are you a skilled local professional?</h2><p>Help more neighbours find your work. Create your provider listing in a few minutes.</p></div><button class="button button-primary" data-view-target="join">Join the directory <span aria-hidden="true">→</span></button></section>
+    </div>
+
+    <section class="view" id="view-find" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Your next good connection</span><h1>Find a local service</h1><p>Search skilled providers by service, town or neighbourhood. Sample profiles and ratings are demo content; verify provider details before hiring.</p></div></div>
+      <div class="section"><div class="shell">
+        <form class="directory-tools" id="directory-search">
+          <div class="field"><label for="directory-keyword">Search providers</label><input id="directory-keyword" type="search" placeholder="Name or keyword"></div>
+          <div class="field"><label for="directory-service">Service</label><select id="directory-service"></select></div>
+          <div class="field"><label for="directory-location">Location</label><select id="directory-location"></select></div>
+          <button class="button button-primary" type="submit">Search</button>
+        </form>
+        <div class="results-line"><span id="results-count">Providers near you</span><span>Demo contact details · verify before hiring</span></div>
+        <div class="providers-grid" id="directory-grid"></div>
+      </div></div>
+    </section>
+
+    <section class="view" id="view-join" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Put your skills on the map</span><h1>Let your work find its people.</h1><p>Create a free listing so people in your area can discover what you do and contact you directly.</p></div></div>
+      <div class="section"><div class="shell form-layout">
+        <aside class="form-aside"><span class="eyebrow" style="color:var(--lime)"><span class="eyebrow-dot"></span> Made for local business</span><h2>Your next customer could be just around the corner.</h2><p>Share a few details about your services and the area you cover. Your listing is saved in this browser demo.</p><ul><li>Show what you do and where</li><li>Get calls and WhatsApp enquiries</li><li>Reach customers beyond walk-ins</li><li>No listing fee in this demo</li></ul></aside>
+        <form class="form-panel" id="provider-form"><h2>Provider details</h2><p class="form-subtitle">Tell the neighbourhood a little about your work.</p><div class="form-grid">
+          <div class="field"><label for="provider-name">Your name</label><input id="provider-name" name="name" required placeholder="e.g. Peter Kamau"></div>
+          <div class="field"><label for="provider-business">Business name</label><input id="provider-business" name="business" placeholder="e.g. Peter's Plumbing"></div>
+          <div class="field"><label for="provider-service">Main service</label><select id="provider-service" name="service" required></select></div>
+          <div class="field"><label for="provider-location">Town / neighbourhood</label><select id="provider-location" name="location" required></select></div>
+          <div class="field"><label for="provider-phone">Phone number</label><input id="provider-phone" name="phone" type="tel" required inputmode="tel" placeholder="07xx xxx xxx"></div>
+          <div class="field"><label for="provider-email">Email address</label><input id="provider-email" name="email" type="email" required placeholder="you@example.com"></div>
+          <div class="field full"><label for="provider-description">About your work</label><textarea id="provider-description" name="description" required placeholder="What jobs do you take on? What should customers know?"></textarea></div>
+          <div class="field full"><label style="display:flex;align-items:flex-start;gap:9px;text-transform:none;letter-spacing:0;font-size:12px;font-weight:500"><input name="consent" type="checkbox" required style="width:auto;min-height:auto;margin-top:3px"> I agree that my listing details and contact number can be shown to people looking for local services.</label></div>
+        </div><button class="button button-primary button-block" type="submit">Create my listing <span aria-hidden="true">→</span></button></form>
+      </div></div>
+    </section>
+
+    <section class="view" id="view-account" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Welcome to the neighbourhood</span><h1>Your account</h1><p>Sign in to see your local demo dashboard, or create an account to get started.</p></div></div>
+      <div class="section"><div class="shell" style="max-width:560px">
+        <form class="form-panel" id="account-form"><h2 id="account-form-title">Sign in</h2><p class="form-subtitle" id="account-form-subtitle">Use your email to access your Mtaani account.</p>
+          <div class="form-grid"><div class="field full" id="account-name-field" hidden><label for="account-name">Your name</label><input id="account-name" name="name" autocomplete="name"></div><div class="field full"><label for="account-email">Email address</label><input id="account-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field full"><label for="account-password">Password</label><input id="account-password" name="password" type="password" required autocomplete="current-password" minlength="6" placeholder="At least 6 characters"></div></div>
+          <button class="button button-primary button-block" type="submit" id="account-submit">Sign in</button><p style="margin:16px 0 0;text-align:center;color:var(--muted);font-size:12px"><span id="account-toggle-copy">New to Mtaani?</span> <button type="button" class="text-link" id="account-toggle" style="border:0;background:none;cursor:pointer">Create an account</button></p>
+          <p style="margin:17px 0 0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Browser-only demo access, not secure production authentication. Do not use a real password.</p><p style="margin:10px 0 0;color:var(--muted);font-size:11px">Demo admins: <strong>jose@gmail.com</strong> or <strong>mose@gmail.com</strong> · password <strong>demo-admin</strong></p>
+        </form>
+      </div></div>
+    </section>
+
+    <section class="view" id="view-dashboard" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Your Mtaani</span><h1 id="dashboard-title">Dashboard</h1><p id="dashboard-subtitle">Your account overview.</p></div></div>
+      <div class="section"><div class="shell">
+        <div class="dashboard-head"><h2 id="dashboard-welcome">Welcome</h2><button class="button button-quiet" id="sign-out" type="button">Sign out</button></div>
+        <div class="dashboard-grid" id="dashboard-stats"></div>
+        <div class="dashboard-panel"><h3 id="dashboard-table-title">Your account activity</h3><div class="table-wrap" id="dashboard-content"></div></div>
+        <div id="admin-panel" hidden>
+          <div class="dashboard-grid" id="admin-stats"></div>
+          <div class="dashboard-panel"><h3>Recent sign-ins</h3><div class="table-wrap" id="admin-logins"></div></div>
+          <div class="dashboard-panel"><h3>Messages & service requests</h3><div class="table-wrap" id="admin-messages"></div></div>
+          <form class="form-panel dashboard-panel" id="admin-update-form"><h3>Post upcoming work or an update</h3><p class="form-subtitle">Publish a notice to the public updates section.</p><div class="form-grid"><div class="field"><label for="update-kind">Record type</label><select id="update-kind" name="kind" required><option>Upcoming work</option><option>Community update</option></select></div><div class="field"><label for="update-date">Date</label><input id="update-date" name="date" type="date"></div><div class="field full"><label for="update-title">Title</label><input id="update-title" name="title" required maxlength="100" placeholder="e.g. Rongai market clean-up day"></div><div class="field"><label for="update-location">Location</label><input id="update-location" name="location" maxlength="80" placeholder="e.g. Ongata Rongai"></div><div class="field full"><label for="update-details">Details</label><textarea id="update-details" name="details" required maxlength="1000" placeholder="Share the work, event, or community update details."></textarea></div></div><button class="button button-primary" type="submit">Publish update</button></form>
+          <div class="dashboard-panel"><h3>Published work & updates</h3><div class="table-wrap" id="admin-updates"></div></div>
+          <div class="dashboard-panel"><h3>Provider listings</h3><div class="table-wrap" id="admin-content"></div></div>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="view" id="view-market" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Share your skills with the neighbourhood</span><h1>Market your skills</h1><p>Tell customers what work you can take on. An admin will review your profile before it appears publicly.</p></div></div>
+      <div class="section"><div class="shell form-layout">
+        <aside class="form-aside"><span class="eyebrow" style="color:var(--lime)"><span class="eyebrow-dot"></span> Let your work get noticed</span><h2>Put your skills in front of local customers.</h2><p>Describe the jobs you do and where you are available. Your phone and WhatsApp contact will be included after approval.</p><ul><li>Promote real skills and services</li><li>Reach customers in your area</li><li>Get a featured homepage card</li><li>Admin reviews listings first</li></ul></aside>
+        <form class="form-panel" id="market-skills-form"><h2>Your work profile</h2><p class="form-subtitle">Use accurate contact details and be specific about the work you can do.</p><div class="form-grid">
+          <div class="field"><label for="market-name">Your name</label><input id="market-name" name="name" required maxlength="80"></div>
+          <div class="field"><label for="market-business">Business name (optional)</label><input id="market-business" name="business" maxlength="100" placeholder="Your business or trading name"></div>
+          <div class="field"><label for="market-service">Service category</label><select id="market-service" name="service" required></select></div>
+          <div class="field"><label for="market-location">Town / neighbourhood</label><select id="market-location" name="location" required></select></div>
+          <div class="field full"><label for="market-phone">Phone number</label><input id="market-phone" name="phone" type="tel" required inputmode="tel" placeholder="07xx xxx xxx"></div>
+          <div class="field full"><label for="market-skill">Skill or job you can do</label><input id="market-skill" name="skill" maxlength="80" required placeholder="e.g. House wiring, leak repairs, furniture making"></div>
+          <div class="field full"><label for="market-headline">Short headline</label><input id="market-headline" name="title" maxlength="100" required placeholder="e.g. Available for home repairs this week"></div>
+          <div class="field"><label for="market-until">Available until (optional)</label><input id="market-until" name="expiresAt" type="date"></div>
+          <div class="field full"><label for="market-details">Work you take on</label><textarea id="market-details" name="details" maxlength="500" required placeholder="Describe your experience, services, and the jobs you are currently available for."></textarea></div>
+          <div class="field full"><label style="display:flex;align-items:flex-start;gap:9px;text-transform:none;letter-spacing:0;font-size:12px;font-weight:500"><input name="consent" type="checkbox" required style="width:auto;min-height:auto;margin-top:3px"> I agree that my approved profile and phone number can be shown publicly so customers can contact me.</label></div>
+        </div><button class="button button-primary button-block" type="submit">Submit for admin review <span aria-hidden="true">→</span></button></form>
+      </div></div>
+    </section>
+
+    <section class="view" id="view-contact" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> We are happy to help</span><h1>Talk to our team</h1><p>Have a question about finding a service or putting your work online? Send us a note.</p></div></div>
+      <div class="section"><div class="shell contact-layout">
+        <div class="contact-details"><h2>Here for your mtaa.</h2><p>We are building a more connected way to find and share local skills across Kenya.</p><div class="contact-method"><small>Email</small>hello@mtaaniwork.co.ke</div><div class="contact-method"><small>WhatsApp</small>+254 700 000 000 <span style="font-size:10px;color:#cfddcf">(demo contact)</span></div><div class="contact-method"><small>Based in</small>Kenya</div></div>
+        <form class="form-panel" id="contact-form"><h2>Send us a message</h2><p class="form-subtitle">Messages are stored in this browser demo for admin review.</p><div class="form-grid"><div class="field"><label for="contact-name">Your name</label><input id="contact-name" required></div><div class="field"><label for="contact-email">Email address</label><input id="contact-email" type="email" required></div><div class="field full"><label for="contact-subject">What is this about?</label><select id="contact-subject"><option>Service request</option><option>Finding a provider</option><option>Listing my business</option><option>Feedback or another question</option></select></div><div class="field full"><label for="contact-message">Your message</label><textarea id="contact-message" required placeholder="How can we help?"></textarea></div></div><button class="button button-primary button-block" type="submit">Send message</button></form>
+      </div></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell"><div class="footer-main"><div><a class="brand" href="#home" data-view-link="home"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a><p class="footer-brand-copy">Connecting Kenya's neighbourhoods with the skilled people right around the corner.</p></div><div class="footer-links"><a href="#find" data-view-link="find">Find a service</a><a href="#join" data-view-target="join">List your service</a><a href="#contact" data-view-link="contact">Contact us</a><a href="#account" data-view-target="account">My account</a><a href="admindashboard.html">Admin login</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Mtaani Work Connections</span><span class="prototype-note">Early demo · Listings and accounts are stored on this device only</span></div></div></footer>
+  <dialog class="profile-dialog" id="provider-dialog" aria-labelledby="provider-dialog-title"></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const services = ['Plumber', 'Electrician', 'Cleaning', 'Mechanic', 'Building & fundi', 'Phone & computer repair', 'Delivery', 'Barber & salon', 'Tutor', 'House moving'];
+    const locations = ['Ongata Rongai', 'Kiserian', 'Karen', 'Kibera', 'Ngong', 'Nairobi CBD', 'Lang’ata', 'Kitengela', 'Thika', 'Mombasa'];
+    const adminEmails = ['jose@gmail.com', 'mose@gmail.com', 'admin@mtaani.co.ke'];
+    const demoAdminPassword = 'Admin@2026';
+    const categoryData = [
+      ['🔧', 'Plumbing', 'Plumber'], ['⚡', 'Electrical', 'Electrician'], ['🧹', 'Cleaning', 'Cleaning'],
+      ['🧰', 'Repairs', 'Phone & computer repair'], ['🧱', 'Building & fundis', 'Building & fundi'], ['🚚', 'Moving & delivery', 'Delivery'],
+      ['✂️', 'Barbers & salons', 'Barber & salon'], ['📚', 'Tutors', 'Tutor'], ['🚗', 'Mechanics', 'Mechanic'], ['🏠', 'House moving', 'House moving']
+    ];
+    const starterProviders = [
+      {id:'p1', name:'James Mwangi', business:'James Electrical Services', service:'Electrician', location:'Ongata Rongai', phone:'0712 345 678', email:'james@example.test', description:'Home wiring, lighting installations and electrical repairs.', rating:'4.9', reviews:28, verified:true, image:'photo-1621905251189-08b45d6a269e'},
+      {id:'p2', name:'Peter Kamau', business:'Kamau Plumbing', service:'Plumber', location:'Kiserian', phone:'0722 456 789', email:'peter@example.test', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'},
+      {id:'p3', name:'Mary Wanjiku', business:"Mary's Home Care", service:'Cleaning', location:'Ongata Rongai', phone:'0701 234 567', email:'mary@example.test', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
+      {id:'p4', name:'Brian Otieno', business:'B.O. Auto Care', service:'Mechanic', location:'Ngong', phone:'0798 123 456', email:'brian@example.test', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.7', reviews:16, verified:false, image:'photo-1486262715619-67b85e0b08d3'},
+      {id:'p5', name:'Faith Njeri', business:'Bright Path Tuition', service:'Tutor', location:'Karen', phone:'0718 987 654', email:'faith@example.test', description:'Patient primary school tutoring in maths, English and science.', rating:'5.0', reviews:12, verified:true, image:'photo-1503676260728-1c00da094a0b'},
+      {id:'p6', name:'Kevin Mutua', business:'Mtaa Phone Fix', service:'Phone & computer repair', location:'Nairobi CBD', phone:'0720 333 444', email:'kevin@example.test', description:'Screen replacement, software support and laptop repairs.', rating:'4.8', reviews:22, verified:false, image:'photo-1519389950473-47ba0277781c'}
+    ];
+    const storage = {
+      get(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
+      set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+    };
+    let providers = [...starterProviders, ...storage.get('mtaani-providers', [])];
+    let currentUser = storage.get('mtaani-user', null);
+    let signupMode = false;
+    let toastTimer;
+
+    function escapeHtml(value='') {
+      return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    }
+    function imageUrl(id, width=750) { return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`; }
+    function fillSelect(select, values, placeholder) {
+      select.innerHTML = `<option value="">${escapeHtml(placeholder)}</option>` + values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');
+    }
+    function toast(message) {
+      const box = document.getElementById('toast'); box.textContent = message; box.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => box.classList.remove('show'), 3300);
+    }
+    function recordLogin(user) {
+      const logins = storage.get('mtaani-logins', []);
+      logins.unshift({id:`login-${Date.now()}`, name:user.name, email:user.email, role:user.role, at:new Date().toISOString()});
+      storage.set('mtaani-logins', logins.slice(0, 100));
+    }
+    function renderUpdates() {
+      const updates = storage.get('mtaani-updates', []);
+      const root = document.getElementById('public-updates');
+      root.innerHTML = updates.length ? updates.map(item => `<article class="update-row"><div class="update-date">${escapeHtml(item.date ? new Date(`${item.date}T00:00:00`).toLocaleDateString() : 'Date to be confirmed')}${item.location ? `<br>${escapeHtml(item.location)}` : ''}</div><div><span class="update-kind">${escapeHtml(item.kind)}</span><h3 style="margin:0 0 5px;font-size:15px">${escapeHtml(item.title)}</h3><p style="margin:0;color:var(--muted);font-size:12px">${escapeHtml(item.details)}</p></div><span class="status-pill">${item.kind === 'Upcoming work' ? 'Upcoming' : 'Update'}</span></article>`).join('') : '<div class="empty-state">No work or community updates have been posted yet.</div>';
+    }
+    function renderPromotions() {
+      const now = new Date();
+      const active = storage.get('mtaani-promotions', []).filter(item => item.active && (!item.expiresAt || new Date(`${item.expiresAt}T23:59:59`) >= now)).map(item => ({item, provider:providers.find(provider => provider.id === item.providerId)})).filter(entry => entry.provider);
+      const section = document.getElementById('promoted-section');
+      section.hidden = active.length === 0;
+      document.getElementById('promoted-grid').innerHTML = active.map(({item, provider}) => {
+        const phone = provider.phone.replace(/[^\d+]/g, '');
+        const whatsapp = phone.startsWith('+') ? phone.slice(1) : phone.startsWith('0') ? `254${phone.slice(1)}` : phone;
+        return `<article class="provider-card promotion-card"><div class="provider-body"><span class="promotion-tag">Featured provider</span><p class="provider-type">${escapeHtml(provider.service)} · ${escapeHtml(provider.location)}</p><h3 class="provider-name">${escapeHtml(provider.business || provider.name)}</h3><p class="promotion-skill">${escapeHtml(item.skill)} · ${escapeHtml(item.title)}</p><p style="margin:0;color:var(--muted);font-size:12px">${escapeHtml(item.details)}</p><div class="provider-actions"><a class="button button-primary" href="tel:${escapeHtml(phone)}" aria-label="Call ${escapeHtml(provider.name)}">☎ Call</a><a class="button button-quiet" href="https://wa.me/${escapeHtml(whatsapp)}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ${escapeHtml(provider.name)}">WhatsApp ↗</a></div></div></article>`;
+      }).join('');
+    }
+    function renderAdminData() {
+      const logins = storage.get('mtaani-logins', []);
+      const messages = storage.get('mtaani-messages', []);
+      const updates = storage.get('mtaani-updates', []);
+      const newMessages = messages.filter(message => !message.reviewed).length;
+      document.getElementById('admin-stats').innerHTML = [['Recent sign-ins', logins.length], ['New messages', newMessages], ['Posted updates', updates.length], ['Provider listings', providers.length]].map(([label, value]) => `<div class="stat-box"><small>${escapeHtml(label)}</small><strong>${escapeHtml(value)}</strong></div>`).join('');
+      document.getElementById('admin-logins').innerHTML = logins.length ? `<table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Signed in</th></tr></thead><tbody>${logins.slice(0, 30).map(item => `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.email)}</td><td>${escapeHtml(item.role)}</td><td>${escapeHtml(new Date(item.at).toLocaleString())}</td></tr>`).join('')}</tbody></table>` : '<p class="prototype-note">No sign-ins recorded in this browser yet.</p>';
+      document.getElementById('admin-messages').innerHTML = messages.length ? `<table><thead><tr><th>Received</th><th>From</th><th>Type</th><th>Message</th><th>Status</th><th></th></tr></thead><tbody>${messages.map(item => `<tr><td>${escapeHtml(new Date(item.at).toLocaleString())}</td><td>${escapeHtml(item.name)}<br>${escapeHtml(item.email)}</td><td>${escapeHtml(item.subject)}</td><td>${escapeHtml(item.message)}</td><td><span class="status-pill">${item.reviewed ? 'Reviewed' : 'New'}</span></td><td>${item.reviewed ? '' : `<button class="button button-quiet" type="button" data-review-message="${escapeHtml(item.id)}">Mark reviewed</button>`}</td></tr>`).join('')}</tbody></table>` : '<p class="prototype-note">No messages or service requests yet.</p>';
+      document.getElementById('admin-updates').innerHTML = updates.length ? `<table><thead><tr><th>Type</th><th>Title</th><th>Location</th><th>Date</th><th>Details</th><th></th></tr></thead><tbody>${updates.map(item => `<tr><td>${escapeHtml(item.kind)}</td><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.location || '—')}</td><td>${escapeHtml(item.date || 'TBC')}</td><td>${escapeHtml(item.details)}</td><td><button class="button button-quiet" type="button" data-delete-update="${escapeHtml(item.id)}">Delete</button></td></tr>`).join('')}</tbody></table>` : '<p class="prototype-note">No updates published yet.</p>';
+      document.getElementById('admin-content').innerHTML = `<table><thead><tr><th>Name</th><th>Email</th><th>Service</th><th>Location</th></tr></thead><tbody>${providers.map(item => `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.email)}</td><td>${escapeHtml(item.service)}</td><td>${escapeHtml(item.location)}</td></tr>`).join('')}</tbody></table>`;
+    }
+    function renderMarketForm() {
+      if (!currentUser) return;
+      const existing = providers.find(provider => provider.email.toLowerCase() === currentUser.email.toLowerCase());
+      document.getElementById('market-name').value = existing?.name || currentUser.name || '';
+      document.getElementById('market-business').value = existing?.business || '';
+      document.getElementById('market-phone').value = existing?.phone || '';
+      document.getElementById('market-service').value = existing?.service || '';
+      document.getElementById('market-location').value = existing?.location || '';
+    }
+    function providerCard(provider) {
+      const phone = provider.phone.replace(/[^\d+]/g, '');
+      const whatsapp = phone.startsWith('+') ? phone.slice(1) : phone.startsWith('0') ? `254${phone.slice(1)}` : phone;
+      const displayName = provider.business || provider.name;
+      const verified = provider.verified ? '<span class="verified">Sample listing</span>' : '';
+      const rating = provider.rating ? `<span class="rating">★ ${escapeHtml(provider.rating)} <span style="color:var(--muted)">(${escapeHtml(provider.reviews || 0)})</span></span>` : '<span>New listing</span>';
+      return `<article class="provider-card"><div class="provider-cover"><img src="${imageUrl(escapeHtml(provider.image || 'photo-1621905251189-08b45d6a269e'), 720)}" alt="${escapeHtml(provider.service)} service in ${escapeHtml(provider.location)}" loading="lazy">${verified}</div><div class="provider-body"><p class="provider-type">${escapeHtml(provider.service)}</p><h3 class="provider-name">${escapeHtml(displayName)}</h3><div class="provider-meta"><span>⌖ ${escapeHtml(provider.location)}</span>${rating}</div>${provider.description ? `<p style="margin:11px 0 0;color:var(--muted);font-size:11px">${escapeHtml(provider.description)}</p>` : ''}<div class="provider-actions"><a class="button button-primary" href="tel:${escapeHtml(phone)}" aria-label="Call ${escapeHtml(displayName)}">☎ Call</a><a class="button button-quiet" href="https://wa.me/${escapeHtml(whatsapp)}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ${escapeHtml(displayName)}">WhatsApp ↗</a></div><button class="provider-view" type="button" data-provider-details="${escapeHtml(provider.id)}">View listing →</button></div></article>`;
+    }
+    function openProviderListing(providerId) {
+      const provider = providers.find(item => item.id === providerId);
+      if (!provider) return;
+      const phone = provider.phone.replace(/[^\d+]/g, '');
+      const whatsapp = phone.startsWith('+') ? phone.slice(1) : phone.startsWith('0') ? `254${phone.slice(1)}` : phone;
+      const promotion = storage.get('mtaani-promotions', []).find(item => item.providerId === provider.id && item.active && (!item.expiresAt || new Date(`${item.expiresAt}T23:59:59`) >= new Date()));
+      const sample = provider.email.endsWith('@example.test');
+      const rating = provider.rating ? `★ ${escapeHtml(provider.rating)} · ${escapeHtml(provider.reviews || 0)} sample reviews` : 'New listing';
+      const badge = sample ? '<span class="promotion-tag">Sample listing · verify before hiring</span>' : '<span class="promotion-tag">Local service provider</span>';
+      document.getElementById('provider-dialog').innerHTML = `<div class="profile-cover"><img src="${imageUrl(escapeHtml(provider.image || 'photo-1621905251189-08b45d6a269e'), 1000)}" alt="${escapeHtml(provider.service)} work"><button class="profile-close" type="button" aria-label="Close listing">×</button></div><div class="profile-body">${badge}<p class="provider-type">${escapeHtml(provider.service)} · ${escapeHtml(provider.location)}</p><h2 id="provider-dialog-title">${escapeHtml(provider.business || provider.name)}</h2><div class="provider-meta"><span>⌖ ${escapeHtml(provider.location)}</span><span class="rating">${rating}</span></div><p class="profile-description">${escapeHtml(provider.description || 'Contact this provider to ask about their services and availability.')}</p>${promotion ? `<div class="profile-promotion"><strong>${escapeHtml(promotion.skill)} · ${escapeHtml(promotion.title)}</strong><p>${escapeHtml(promotion.details)}${promotion.expiresAt ? `<br>Available until ${escapeHtml(new Date(`${promotion.expiresAt}T00:00:00`).toLocaleDateString())}` : ''}</p></div>` : ''}<div class="provider-actions"><a class="button button-primary" href="tel:${escapeHtml(phone)}">☎ Call ${escapeHtml(provider.name)}</a><a class="button button-quiet" href="https://wa.me/${escapeHtml(whatsapp)}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div></div>`;
+      document.getElementById('provider-dialog').showModal();
+    }
+    function renderProviders(target, list) {
+      const root = document.getElementById(target);
+      root.innerHTML = list.length ? list.map(providerCard).join('') : '<div class="empty-state"><strong>No providers found just yet.</strong><br>Try another service or nearby location, or let a local provider know they can list here.</div>';
+    }
+    function renderDirectory() {
+      const service = document.getElementById('directory-service').value.toLowerCase();
+      const location = document.getElementById('directory-location').value.toLowerCase();
+      const query = document.getElementById('directory-keyword').value.trim().toLowerCase();
+      const results = providers.filter(provider => {
+        const serviceMatch = !service || provider.service.toLowerCase() === service;
+        const locationMatch = !location || provider.location.toLowerCase() === location;
+        const queryMatch = !query || [provider.name, provider.business, provider.service, provider.location, provider.description].some(value => (value || '').toLowerCase().includes(query));
+        return serviceMatch && locationMatch && queryMatch;
+      });
+      document.getElementById('results-count').textContent = `${results.length} ${results.length === 1 ? 'provider' : 'providers'} found`;
+      renderProviders('directory-grid', results);
+    }
+    function renderDashboard() {
+      if (!currentUser) { setView('account'); return; }
+      document.getElementById('dashboard-welcome').textContent = `Welcome, ${currentUser.name}`;
+      const isAdmin = currentUser.role === 'admin';
+      const ownListing = providers.find(item => item.email.toLowerCase() === currentUser.email.toLowerCase());
+      document.getElementById('dashboard-title').textContent = isAdmin ? 'Admin dashboard' : currentUser.role === 'provider' ? 'Provider dashboard' : 'Customer dashboard';
+      document.getElementById('dashboard-subtitle').textContent = isAdmin ? 'A simple overview of listings in this local demo.' : currentUser.role === 'provider' ? 'Your local listing and account overview.' : 'Your Mtaani account and local service directory.';
+      const stats = isAdmin ? [['Provider listings', providers.length], ['Listed areas', new Set(providers.map(item => item.location)).size], ['Demo status', 'Local']] : currentUser.role === 'provider' ? [['Your listing', ownListing ? 'Live' : 'Not found'], ['Service area', ownListing?.location || 'Add listing'], ['Account type', 'Provider']] : [['Saved providers', 0], ['Bookings', 0], ['Account type', 'Customer']];
+      document.getElementById('dashboard-stats').innerHTML = stats.map(([label, value]) => `<div class="stat-box"><small>${escapeHtml(label)}</small><strong>${escapeHtml(value)}</strong></div>`).join('');
+      document.getElementById('dashboard-table-title').textContent = isAdmin ? 'Recent provider listings' : currentUser.role === 'provider' ? 'Your provider listing' : 'Getting started';
+      if (isAdmin) {
+        document.getElementById('dashboard-content').innerHTML = `<table><thead><tr><th>Provider</th><th>Service</th><th>Location</th><th>Phone</th></tr></thead><tbody>${providers.map(item => `<tr><td>${escapeHtml(item.business || item.name)}</td><td>${escapeHtml(item.service)}</td><td>${escapeHtml(item.location)}</td><td>${escapeHtml(item.phone)}</td></tr>`).join('')}</tbody></table>`;
+      } else if (currentUser.role === 'provider' && ownListing) {
+        document.getElementById('dashboard-content').innerHTML = `<table><thead><tr><th>Business</th><th>Service</th><th>Location</th><th>Contact</th><th>Status</th></tr></thead><tbody><tr><td>${escapeHtml(ownListing.business || ownListing.name)}</td><td>${escapeHtml(ownListing.service)}</td><td>${escapeHtml(ownListing.location)}</td><td>${escapeHtml(ownListing.phone)}</td><td><span class="status-pill">Local demo listing</span></td></tr></tbody></table>`;
+      } else {
+        document.getElementById('dashboard-content').innerHTML = '<p style="margin:0;color:var(--muted);font-size:12px">Browse local providers and contact them directly by phone or WhatsApp. Booking and payments are not enabled in this demo.</p><button class="button button-primary" style="margin-top:15px" data-view-target="find">Browse services →</button>';
+      }
+      if (!isAdmin) {
+        const hasPendingSubmission = storage.get('mtaani-skill-submissions', []).some(item => item.email.toLowerCase() === currentUser.email.toLowerCase() && item.status === 'pending');
+        document.getElementById('dashboard-content').insertAdjacentHTML('beforeend', `<div style="margin-top:16px"><button class="button button-primary" type="button" data-view-target="market">Market my skills →</button>${hasPendingSubmission ? '<p style="margin:9px 0 0;color:var(--muted);font-size:12px">Your skills profile is awaiting admin review.</p>' : ''}</div>`);
+      }
+      document.getElementById('admin-panel').hidden = !isAdmin;
+      if (isAdmin) renderAdminData();
+      document.getElementById('account-button').textContent = 'My dashboard';
+    }
+    function setView(name, updateHash=true) {
+      if (name === 'dashboard' && !currentUser) name = 'account';
+      if (name === 'market' && !currentUser) { toast('Sign in to market your skills.'); name = 'account'; }
+      if (name === 'market' && currentUser?.role === 'admin') { toast('Use the admin dashboard to promote a provider.'); name = 'dashboard'; }
+      document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== `view-${name}`; });
+      document.querySelectorAll('[data-view-link]').forEach(link => link.classList.toggle('active', link.dataset.viewLink === name));
+      if (name === 'dashboard') renderDashboard();
+      if (name === 'market') renderMarketForm();
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('menu-toggle').setAttribute('aria-expanded', 'false');
+      if (updateHash) history.replaceState(null, '', `#${name}`);
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    function persistUser(user) { currentUser = user; storage.set('mtaani-user', user); recordLogin(user); document.getElementById('account-button').textContent = 'My dashboard'; }
+    function refreshProviderData() {
+      providers = [...starterProviders, ...storage.get('mtaani-providers', [])];
+      renderProviders('featured-grid', providers.slice(0, 3)); renderDirectory(); renderPromotions();
+    }
+    function init() {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      fillSelect(document.getElementById('hero-location'), locations, 'Choose an area');
+      fillSelect(document.getElementById('hero-service'), services, 'Choose a service');
+      fillSelect(document.getElementById('directory-service'), services, 'All services');
+      fillSelect(document.getElementById('directory-location'), locations, 'All locations');
+      fillSelect(document.getElementById('provider-service'), services, 'Choose a service');
+      fillSelect(document.getElementById('provider-location'), locations, 'Choose an area');
+      fillSelect(document.getElementById('market-service'), services, 'Choose a service');
+      fillSelect(document.getElementById('market-location'), locations, 'Choose an area');
+      document.getElementById('category-grid').innerHTML = categoryData.map(([icon, label, service]) => `<button class="category-tile" type="button" data-category="${escapeHtml(service)}"><span class="category-icon" aria-hidden="true">${icon}</span><strong>${escapeHtml(label)}</strong><small>Find a local pro →</small></button>`).join('');
+      refreshProviderData();
+      renderUpdates();
+      if (currentUser) document.getElementById('account-button').textContent = 'My dashboard';
+      const initial = location.hash.slice(1);
+      if (['find','join','market','account','dashboard','contact'].includes(initial)) setView(initial, false);
+    }
+
+    document.addEventListener('click', event => {
+      const providerDetails = event.target.closest('[data-provider-details]');
+      if (providerDetails) { openProviderListing(providerDetails.dataset.providerDetails); return; }
+      const target = event.target.closest('[data-view-target], [data-view-link], [data-scroll-link], [data-category]');
+      if (!target) return;
+      if (target.dataset.viewTarget) { event.preventDefault(); setView(target.dataset.viewTarget === 'account' && currentUser ? 'dashboard' : target.dataset.viewTarget); }
+      if (target.dataset.viewLink) { event.preventDefault(); setView(target.dataset.viewLink); }
+      if (target.dataset.scrollLink) { event.preventDefault(); if (document.getElementById('view-home').hidden) setView('home', false); requestAnimationFrame(() => document.getElementById(target.dataset.scrollLink).scrollIntoView({behavior:'smooth'})); }
+      if (target.dataset.category) { document.getElementById('directory-service').value = target.dataset.category; setView('find'); renderDirectory(); }
+    });
+    document.getElementById('provider-dialog').addEventListener('click', event => {
+      if (event.target === event.currentTarget || event.target.closest('.profile-close')) event.currentTarget.close();
+    });
+    document.getElementById('provider-dialog').addEventListener('cancel', event => event.currentTarget.close());
+    document.getElementById('menu-toggle').addEventListener('click', event => {
+      const open = document.getElementById('nav-links').classList.toggle('open'); event.currentTarget.setAttribute('aria-expanded', String(open));
+    });
+    document.getElementById('hero-search').addEventListener('submit', event => {
+      event.preventDefault(); document.getElementById('directory-location').value = document.getElementById('hero-location').value;
+      document.getElementById('directory-service').value = document.getElementById('hero-service').value; setView('find'); renderDirectory();
+    });
+    document.getElementById('directory-search').addEventListener('submit', event => { event.preventDefault(); renderDirectory(); });
+    ['directory-keyword','directory-service','directory-location'].forEach(id => document.getElementById(id).addEventListener(id === 'directory-keyword' ? 'input' : 'change', renderDirectory));
+    document.getElementById('provider-form').addEventListener('submit', event => {
+      event.preventDefault(); const form = new FormData(event.currentTarget); const phone = String(form.get('phone')).trim();
+      if (!/^(?:\+?254|0)\d{9}$/.test(phone.replace(/[\s()-]/g, ''))) { toast('Enter a valid Kenyan phone number, for example 0712 345 678.'); return; }
+      const provider = {id:`user-${Date.now()}`, name:String(form.get('name')).trim(), business:String(form.get('business')).trim(), service:String(form.get('service')), location:String(form.get('location')), phone, email:String(form.get('email')).trim(), description:String(form.get('description')).trim(), rating:'', reviews:0, verified:false, image:'photo-1621905251189-08b45d6a269e'};
+      const saved = storage.get('mtaani-providers', []); saved.push(provider); storage.set('mtaani-providers', saved);
+      const users = storage.get('mtaani-users', []); let account = users.find(item => item.email.toLowerCase() === provider.email.toLowerCase());
+      if (!account) { account = {name:provider.name, email:provider.email, password:'', role:'provider'}; users.push(account); storage.set('mtaani-users', users); }
+      persistUser({name:account.name, email:account.email, role:'provider'}); refreshProviderData(); event.currentTarget.reset(); toast('Your listing is ready in this browser demo.'); setView('dashboard');
+    });
+    document.getElementById('market-skills-form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (!currentUser || currentUser.role === 'admin') { toast('Sign in with a customer or provider account to submit your skills.'); setView(currentUser ? 'dashboard' : 'account'); return; }
+      const form = new FormData(event.currentTarget);
+      const phone = String(form.get('phone')).trim();
+      if (!/^(?:\+?254|0)\d{9}$/.test(phone.replace(/[\s()-]/g, ''))) { toast('Enter a valid Kenyan phone number, for example 0712 345 678.'); return; }
+      const submissions = storage.get('mtaani-skill-submissions', []);
+      if (submissions.some(item => item.email.toLowerCase() === currentUser.email.toLowerCase() && item.status === 'pending')) { toast('You already have a skills profile awaiting review.'); return; }
+      const existing = providers.find(provider => provider.email.toLowerCase() === currentUser.email.toLowerCase());
+      submissions.unshift({id:`skill-${Date.now()}`, providerId:existing?.id || `provider-${Date.now()}`, name:String(form.get('name')).trim(), business:String(form.get('business')).trim(), email:currentUser.email, service:String(form.get('service')), location:String(form.get('location')), phone, skill:String(form.get('skill')).trim(), title:String(form.get('title')).trim(), expiresAt:String(form.get('expiresAt')), details:String(form.get('details')).trim(), status:'pending', submittedAt:new Date().toISOString()});
+      storage.set('mtaani-skill-submissions', submissions);
+      event.currentTarget.reset();
+      renderDashboard();
+      toast('Your skills profile was sent to the admin for review.');
+      setView('dashboard');
+    });
+    document.getElementById('account-toggle').addEventListener('click', () => {
+      signupMode = !signupMode; document.getElementById('account-form-title').textContent = signupMode ? 'Create your account' : 'Sign in';
+      document.getElementById('account-submit').textContent = signupMode ? 'Create account' : 'Sign in';
+      document.getElementById('account-toggle-copy').textContent = signupMode ? 'Already have an account?' : 'New to Mtaani?';
+      document.getElementById('account-toggle').textContent = signupMode ? 'Sign in' : 'Create an account';
+      document.getElementById('account-name-field').hidden = !signupMode;
+      document.getElementById('account-password').autocomplete = signupMode ? 'new-password' : 'current-password';
+    });
+    document.getElementById('account-form').addEventListener('submit', event => {
+      event.preventDefault(); const email = document.getElementById('account-email').value.trim().toLowerCase();
+      const password = document.getElementById('account-password').value;
+      const users = storage.get('mtaani-users', []);
+      if (adminEmails.includes(email)) {
+        if (password !== demoAdminPassword) { toast('Use the demo admin password shown on this page.'); return; }
+        const name = email.split('@')[0].replace(/^./, character => character.toUpperCase());
+        persistUser({name, email, role:'admin'}); toast('Signed in to the local demo admin dashboard.'); setView('dashboard'); return;
+      }
+      if (signupMode) {
+        const name = document.getElementById('account-name').value.trim();
+        if (!name) { toast('Please enter your name.'); return; }
+        if (users.some(item => item.email.toLowerCase() === email)) { toast('An account with this email already exists.'); return; }
+        users.push({name, email, password, role:'customer'}); storage.set('mtaani-users', users); persistUser({name, email, role:'customer'}); toast('Your local demo account is ready.'); setView('dashboard');
+      } else {
+        const user = users.find(item => item.email.toLowerCase() === email && item.password === password);
+        const provider = storage.get('mtaani-providers', []).find(item => item.email.toLowerCase() === email);
+        if (!user && !provider) { toast('Account not found. Create an account or register as a provider first.'); return; }
+        persistUser({name:user?.name || provider.name, email, role:user?.role || 'provider'}); toast('Welcome back.'); setView('dashboard');
+      }
+    });
+    document.getElementById('sign-out').addEventListener('click', () => { currentUser = null; localStorage.removeItem('mtaani-user'); document.getElementById('account-button').textContent = 'Sign in'; toast('You have signed out.'); setView('home'); });
+    document.getElementById('contact-form').addEventListener('submit', event => {
+      event.preventDefault(); const messages = storage.get('mtaani-messages', []);
+      messages.unshift({id:`message-${Date.now()}`, name:document.getElementById('contact-name').value.trim(), email:document.getElementById('contact-email').value.trim(), subject:document.getElementById('contact-subject').value, message:document.getElementById('contact-message').value.trim(), at:new Date().toISOString(), reviewed:false});
+      storage.set('mtaani-messages', messages); event.currentTarget.reset(); toast('Your message is saved for the local demo admin to review.');
+    });
+    window.addEventListener('storage', event => {
+      if (!event.key || ['mtaani-providers','mtaani-promotions'].includes(event.key)) refreshProviderData();
+    });
+    document.getElementById('admin-update-form').addEventListener('submit', event => {
+      event.preventDefault(); const form = new FormData(event.currentTarget); const updates = storage.get('mtaani-updates', []);
+      updates.unshift({id:`update-${Date.now()}`, kind:String(form.get('kind')), date:String(form.get('date')), title:String(form.get('title')).trim(), location:String(form.get('location')).trim(), details:String(form.get('details')).trim(), at:new Date().toISOString()});
+      storage.set('mtaani-updates', updates); event.currentTarget.reset(); renderUpdates(); renderAdminData(); toast('Your update is published in this browser demo.');
+    });
+    document.getElementById('view-dashboard').addEventListener('click', event => {
+      const reviewButton = event.target.closest('[data-review-message]');
+      const deleteButton = event.target.closest('[data-delete-update]');
+      if (reviewButton) {
+        const messages = storage.get('mtaani-messages', []).map(item => item.id === reviewButton.dataset.reviewMessage ? {...item, reviewed:true} : item);
+        storage.set('mtaani-messages', messages); renderAdminData();
+      }
+      if (deleteButton) {
+        const updates = storage.get('mtaani-updates', []).filter(item => item.id !== deleteButton.dataset.deleteUpdate);
+        storage.set('mtaani-updates', updates); renderUpdates(); renderAdminData(); toast('Update removed.');
+      }
+    });
+    init();
+  </script>
+</body>
+</html>

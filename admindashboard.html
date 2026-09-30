@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#194530">
+	<title>Admin dashboard | Mtaani Work Connections</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root{--ink:#202821;--muted:#68716a;--paper:#f7f6f1;--white:#fff;--line:#e5e7df;--green:#235a43;--deep:#194530;--lime:#d9e89a;--coral:#df735c;--red:#a13b31;--shadow:0 18px 48px rgba(34,45,36,.09)}
+		*{box-sizing:border-box}[hidden]{display:none !important}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.55 'DM Sans',sans-serif}button,input,select,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{color:inherit}h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:0}.shell{width:min(1360px,calc(100% - 36px));margin:auto}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid transparent;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}.button:hover{transform:translateY(-1px)}.primary{color:var(--deep);background:var(--lime)}.primary:hover{background:#e6efbd}.quiet{border-color:var(--line);background:#fff}.quiet:hover{border-color:#aab8a8}.danger{border-color:#e7c9c5;color:var(--red);background:#fff}.button.small{min-height:31px;padding:0 9px;font-size:11px}
+		.auth-screen{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#194530,#235a43 62%,#54734e)}.auth-box{width:min(440px,100%);padding:31px;border:1px solid rgba(255,255,255,.4);border-radius:9px;background:#fff;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:10px;margin-bottom:29px}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;color:var(--deep);background:var(--lime);font:800 16px 'Manrope',sans-serif}.brand-name{font:800 13px/1.2 'Manrope',sans-serif}.brand-name span{display:block;color:var(--green)}.eyebrow{color:var(--green);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.auth-box h1{margin:7px 0;font-size:29px}.auth-box>p{margin:0 0 22px;color:var(--muted);font-size:13px}.field{margin:14px 0}.field label{display:block;margin-bottom:5px;color:#4b554c;font-size:11px;font-weight:700}.field input,.field select,.field textarea{width:100%;min-height:41px;padding:9px 11px;border:1px solid #dfe2d9;border-radius:5px;background:#fff;outline:none;font-size:13px}.field textarea{min-height:94px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#78957c;box-shadow:0 0 0 3px rgba(35,90,67,.1)}.auth-box .button{width:100%;margin-top:7px;min-height:44px;background:var(--green);color:#fff}.auth-box .button:hover{background:var(--deep)}.auth-note{margin-top:16px;padding:12px;border-radius:5px;color:#596257;background:#f0f2e9;font-size:11px}.auth-note strong{color:var(--deep)}.error{min-height:18px;margin:10px 0 0;color:var(--red);font-size:12px}.demo-warning{margin-top:16px;color:#858b83;font-size:10px}
+		.app{min-height:100vh}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 25px;border-bottom:1px solid var(--line);background:#fff}.topbar .brand{margin:0}.topbar .brand-mark{background:var(--green);color:#fff}.topbar .brand-name span{color:var(--green)}.top-actions{display:flex;align-items:center;gap:12px}.admin-email{color:var(--muted);font-size:11px}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 68px)}.sidebar{padding:23px 13px;border-right:1px solid var(--line);background:#fff}.side-caption{padding:0 10px 9px;color:#879087;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.side-nav{display:grid;gap:4px}.side-nav a{display:flex;align-items:center;gap:10px;padding:10px;border-radius:5px;color:#59635b;font-size:12px;font-weight:600}.side-nav a:hover,.side-nav a.active{color:var(--deep);background:#edf2e9}.side-icon{width:20px;text-align:center;font-size:15px}.side-footer{margin:24px 10px 0;padding-top:14px;border-top:1px solid var(--line);color:#858b83;font-size:10px}.workspace{min-width:0;padding:29px clamp(17px,3vw,42px) 55px}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}.page-heading h1{margin:5px 0 4px;font-size:29px}.page-heading p{margin:0;color:var(--muted);font-size:12px}.panel{margin-top:19px;padding:19px;border:1px solid var(--line);border-radius:7px;background:#fff}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 13px}.panel-heading h2{margin:0;font-size:15px}.panel-heading p{margin:3px 0 0;color:var(--muted);font-size:11px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{padding:15px;border:1px solid var(--line);border-radius:6px;background:#fff}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{display:block;margin-top:5px;font:700 24px 'Manrope',sans-serif}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:11px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}td{max-width:320px;overflow-wrap:anywhere}.badge{display:inline-block;padding:3px 7px;border-radius:20px;color:#735a17;background:#f7f0d9;font-size:9px;font-weight:700;white-space:nowrap}.badge.done{color:var(--green);background:#e8f1e7}.empty{padding:22px;color:var(--muted);font-size:12px;text-align:center}.update-form{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}.update-form .full{grid-column:1/-1}.update-form .button{justify-self:start;margin-top:7px}.notice{margin-bottom:17px;padding:10px 12px;border-left:3px solid var(--coral);color:#686f65;background:#fff;font-size:10px}.mobile-menu{display:none}
+		@media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0;padding:9px 12px;border-right:0;border-bottom:1px solid var(--line)}.side-caption,.side-footer{display:none}.side-nav{display:flex;min-width:0;max-width:100%;overflow:auto}.side-nav a{flex:0 0 auto;white-space:nowrap}.workspace{padding-top:22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+		@media(max-width:560px){.shell{width:calc(100% - 22px)}.topbar{height:60px;padding:0 11px}.topbar .brand-name{font-size:11px}.admin-email{display:none}.layout{min-height:calc(100vh - 60px)}.workspace{padding:18px 11px 38px}.page-heading{align-items:flex-start;flex-direction:column}.page-heading h1{font-size:25px}.panel{padding:14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.update-form{grid-template-columns:1fr}.update-form .full{grid-column:auto}.auth-box{padding:23px}.top-actions .button{min-height:35px;padding:0 10px}}
+	</style>
+	<style>
+		.auth-box .home-link { margin-top: 10px; border-color: var(--line); color: var(--ink); background: #fff; }
+		.auth-box .home-link:hover { background: var(--paper); }
+	</style>
+</head>
+<body>
+	<main class="auth-screen" id="auth-screen">
+		<form class="auth-box" id="login-form">
+			<a class="brand" href="index.html"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a>
+			<span class="eyebrow">Administration</span>
+			<h1>Admin dashboard</h1>
+			<p>Sign in to review activity and publish local work updates.</p>
+			<div class="field"><label for="admin-email-input">Admin email</label><input id="admin-email-input" type="email" autocomplete="username" required placeholder="jose@gmail.com"></div>
+			<div class="field"><label for="admin-password-input">Password</label><input id="admin-password-input" type="password" autocomplete="current-password" required placeholder="Enter admin password"></div>
+			<button class="button" type="submit">Sign in</button>
+			<a class="button quiet home-link" href="index.html">← Home</a>
+			<p class="error" id="login-error" role="alert"></p>
+			<div class="auth-note">Demo admins: <strong>jose@gmail.com</strong> and <strong>mose@gmail.com</strong><br>Demo password: <strong>Admin@2026</strong></div>
+			<p class="demo-warning">Prototype only: access and records are stored in this browser. Use server-side authentication before production.</p>
+		</form>
+	</main>
+
+	<div class="app" id="admin-app" hidden>
+		<header class="topbar">
+			<a class="brand" href="index.html"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a>
+			<div class="top-actions"><span class="admin-email" id="signed-in-email"></span><a class="button quiet" href="index.html">Open website</a><button class="button quiet" id="logout-button" type="button">Sign out</button></div>
+		</header>
+		<div class="layout">
+			<aside class="sidebar">
+				<div class="side-caption">Workspace</div>
+				<nav class="side-nav" aria-label="Admin sections">
+					<a class="active" href="#overview" data-section="overview"><span class="side-icon">▦</span>Overview</a>
+					<a href="#signins" data-section="signins"><span class="side-icon">↗</span>Sign-ins</a>
+					<a href="#messages" data-section="messages"><span class="side-icon">✉</span>Messages & requests</a>
+					<a href="#skill-review" data-section="skill-review"><span class="side-icon">♙</span>Skill submissions</a>
+					<a href="#updates" data-section="updates"><span class="side-icon">＋</span>Work & updates</a>
+					<a href="#promotions" data-section="promotions"><span class="side-icon">✦</span>Promote a provider</a>
+					<a href="#providers" data-section="providers"><span class="side-icon">♙</span>Providers</a>
+				</nav>
+				<div class="side-footer">Mtaani Work Connections<br>Admin workspace · local demo</div>
+			</aside>
+			<main class="workspace" id="overview">
+				<div class="notice">Local demo data is visible only in this browser profile. This page does not provide secure production authentication.</div>
+				<div class="page-heading"><div><span class="eyebrow">Your neighbourhood, at a glance</span><h1>Admin dashboard</h1><p>Monitor sign-ins, follow up on requests, and share upcoming work.</p></div><button class="button primary" type="button" id="refresh-button">Refresh activity</button></div>
+				<section class="stats" id="admin-stats" aria-label="Activity summary"></section>
+				<section class="panel" id="signins"><div class="panel-heading"><div><h2>Recent sign-ins</h2><p>Latest account logins recorded by this browser.</p></div></div><div class="table-wrap" id="login-table"></div></section>
+				<section class="panel" id="messages"><div class="panel-heading"><div><h2>Messages & service requests</h2><p>Customer enquiries submitted through the website.</p></div></div><div class="table-wrap" id="message-table"></div></section>
+				<section class="panel" id="skill-review"><div class="panel-heading"><div><h2>Skills submissions</h2><p>Review a member's details before publishing their profile and promotion.</p></div></div><div class="table-wrap" id="skill-submission-table"></div></section>
+				<section class="panel" id="updates"><div class="panel-heading"><div><h2>Post upcoming work or an update</h2><p>Published notices appear in the website's community updates section.</p></div></div>
+					<form class="update-form" id="update-form">
+						<div class="field"><label for="update-kind">Record type</label><select id="update-kind" name="kind" required><option>Upcoming work</option><option>Community update</option></select></div>
+						<div class="field"><label for="update-date">Date</label><input id="update-date" name="date" type="date"></div>
+						<div class="field full"><label for="update-title">Title</label><input id="update-title" name="title" maxlength="100" required placeholder="e.g. Community clean-up day"></div>
+						<div class="field"><label for="update-location">Location</label><input id="update-location" name="location" maxlength="80" placeholder="e.g. Ongata Rongai"></div>
+						<div class="field full"><label for="update-details">Details</label><textarea id="update-details" name="details" maxlength="1000" required placeholder="Share the work, event, or community update details."></textarea></div>
+						<button class="button primary" type="submit">Publish update</button>
+					</form>
+				</section>
+				<section class="panel"><div class="panel-heading"><div><h2>Published work & updates</h2><p>Remove notices that are no longer relevant.</p></div></div><div class="table-wrap" id="update-table"></div></section>
+				<section class="panel" id="promotions">
+					<div class="panel-heading"><div><h2>Promote a provider</h2><p>Feature a registered provider's skill and the work they are available to do.</p></div></div>
+					<form class="update-form" id="promotion-form">
+						<div class="field"><label for="promotion-provider">Provider</label><select id="promotion-provider" name="providerId" required></select></div>
+						<div class="field"><label for="promotion-skill">Skill or job</label><input id="promotion-skill" name="skill" maxlength="80" required placeholder="e.g. Same-day plumbing repairs"></div>
+						<div class="field full"><label for="promotion-title">Featured headline</label><input id="promotion-title" name="title" maxlength="100" required placeholder="e.g. Available for home repairs this week"></div>
+						<div class="field"><label for="promotion-until">Promote until (optional)</label><input id="promotion-until" name="expiresAt" type="date"></div>
+						<div class="field full"><label for="promotion-details">Work available / provider skills</label><textarea id="promotion-details" name="details" maxlength="500" required placeholder="Describe the work this provider can take on and where they are available."></textarea></div>
+						<button class="button primary" id="promotion-submit" type="submit">Publish promotion</button>
+					</form>
+				</section>
+				<section class="panel"><div class="panel-heading"><div><h2>Provider promotions</h2><p>Pause, reactivate, or remove homepage promotions.</p></div></div><div class="table-wrap" id="promotion-table"></div></section>
+				<section class="panel" id="providers"><div class="panel-heading"><div><h2>Provider listings</h2><p>Provider details currently stored in this browser.</p></div></div><div class="table-wrap" id="provider-table"></div></section>
+			</main>
+		</div>
+	</div>
+	<div id="toast" role="status" aria-live="polite" style="position:fixed;right:18px;bottom:18px;z-index:5;max-width:calc(100% - 36px);padding:12px 16px;border-radius:6px;color:#fff;background:#194530;box-shadow:var(--shadow);font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s"></div>
+
+	<script>
+		const ADMIN_EMAILS = ['jose@gmail.com', 'mose@gmail.com', 'admin@mtaani.co.ke'];
+		const DEMO_PASSWORD = 'Admin@2026';
+		const storage = {
+			get(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
+			set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+		};
+		let toastTimer;
+
+		function escapeHtml(value = '') {
+			return String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+		}
+		function showToast(message) {
+			const toast = document.getElementById('toast');
+			toast.textContent = message;
+			toast.style.opacity = '1';
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+		}
+		function showDashboard(user) {
+			document.getElementById('auth-screen').hidden = true;
+			document.getElementById('admin-app').hidden = false;
+			document.getElementById('signed-in-email').textContent = user.email;
+			renderDashboard();
+		}
+		function renderDashboard() {
+			const logins = storage.get('mtaani-logins', []);
+			const messages = storage.get('mtaani-messages', []);
+			const skillSubmissions = storage.get('mtaani-skill-submissions', []);
+			const updates = storage.get('mtaani-updates', []);
+			const promotions = storage.get('mtaani-promotions', []);
+			const providers = [...storage.get('mtaani-providers', [])];
+			const newMessages = messages.filter(message => !message.reviewed).length;
+			document.getElementById('admin-stats').innerHTML = [
+				['Recent sign-ins', logins.length], ['New messages', newMessages], ['Published updates', updates.length], ['Provider listings', providers.length]
+			].map(([label, value]) => `<article class="stat"><small>${escapeHtml(label)}</small><strong>${escapeHtml(value)}</strong></article>`).join('');
+			document.getElementById('login-table').innerHTML = logins.length ? `<table><thead><tr><th>Name</th><th>Email</th><th>Account type</th><th>Signed in</th></tr></thead><tbody>${logins.slice(0, 40).map(item => `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.email)}</td><td>${escapeHtml(item.role)}</td><td>${escapeHtml(item.at ? new Date(item.at).toLocaleString() : '—')}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No sign-ins have been recorded in this browser yet.</div>';
+			document.getElementById('message-table').innerHTML = messages.length ? `<table><thead><tr><th>Received</th><th>From</th><th>Request type</th><th>Message</th><th>Status</th><th></th></tr></thead><tbody>${messages.map(item => `<tr><td>${escapeHtml(item.at ? new Date(item.at).toLocaleString() : '—')}</td><td>${escapeHtml(item.name)}<br>${escapeHtml(item.email)}</td><td>${escapeHtml(item.subject)}</td><td>${escapeHtml(item.message)}</td><td><span class="badge ${item.reviewed ? 'done' : ''}">${item.reviewed ? 'Reviewed' : 'New'}</span></td><td>${item.reviewed ? '' : `<button class="button quiet small" type="button" data-review="${escapeHtml(item.id)}">Mark reviewed</button>`}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No messages or service requests yet.</div>';
+			document.getElementById('skill-submission-table').innerHTML = skillSubmissions.length ? `<table><thead><tr><th>Submitted by</th><th>Skill / service</th><th>Available work</th><th>Area / contact</th><th>Status</th><th></th></tr></thead><tbody>${skillSubmissions.map(item => `<tr><td>${escapeHtml(item.name)}<br>${escapeHtml(item.email)}<br>${escapeHtml(item.submittedAt ? new Date(item.submittedAt).toLocaleString() : '—')}</td><td>${escapeHtml(item.service)}<br>${escapeHtml(item.skill)}</td><td><strong>${escapeHtml(item.title)}</strong><br>${escapeHtml(item.details)}</td><td>${escapeHtml(item.location)}<br>${escapeHtml(item.phone)}</td><td><span class="badge ${item.status === 'approved' ? 'done' : ''}">${escapeHtml(item.status)}</span></td><td>${item.status === 'pending' ? `<button class="button primary small" type="button" data-approve-skill="${escapeHtml(item.id)}">Approve & publish</button> <button class="button danger small" type="button" data-reject-skill="${escapeHtml(item.id)}">Reject</button>` : ''}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No skills submissions have been received.</div>';
+			document.getElementById('update-table').innerHTML = updates.length ? `<table><thead><tr><th>Type</th><th>Title</th><th>Location</th><th>Date</th><th>Details</th><th></th></tr></thead><tbody>${updates.map(item => `<tr><td>${escapeHtml(item.kind)}</td><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.location || '—')}</td><td>${escapeHtml(item.date || 'To be confirmed')}</td><td>${escapeHtml(item.details)}</td><td><button class="button danger small" type="button" data-delete-update="${escapeHtml(item.id)}">Delete</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No work or community updates have been posted.</div>';
+			const promotionSelect = document.getElementById('promotion-provider');
+			const selectedProvider = promotionSelect.value;
+			promotionSelect.innerHTML = '<option value="">Choose a registered provider</option>' + providers.map(item => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.business || item.name)} · ${escapeHtml(item.service)} · ${escapeHtml(item.location)}</option>`).join('');
+			if (providers.some(item => item.id === selectedProvider)) promotionSelect.value = selectedProvider;
+			document.getElementById('promotion-submit').disabled = providers.length === 0;
+			document.getElementById('promotion-table').innerHTML = promotions.length ? `<table><thead><tr><th>Provider</th><th>Skill / job</th><th>Headline</th><th>Until</th><th>Status</th><th></th></tr></thead><tbody>${promotions.map(item => { const provider = providers.find(entry => entry.id === item.providerId); const expired = item.expiresAt && new Date(`${item.expiresAt}T23:59:59`) < new Date(); return `<tr><td>${escapeHtml(provider?.business || provider?.name || 'Provider no longer listed')}</td><td>${escapeHtml(item.skill)}</td><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.expiresAt || 'No end date')}</td><td><span class="badge ${item.active && !expired ? 'done' : ''}">${item.active && !expired ? 'Live' : expired ? 'Expired' : 'Paused'}</span></td><td><button class="button quiet small" type="button" data-toggle-promotion="${escapeHtml(item.id)}">${item.active ? 'Pause' : 'Activate'}</button> <button class="button danger small" type="button" data-delete-promotion="${escapeHtml(item.id)}">Delete</button></td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">No provider promotions yet. Register a provider, then feature their available work here.</div>';
+			document.getElementById('provider-table').innerHTML = providers.length ? `<table><thead><tr><th>Provider</th><th>Email</th><th>Service</th><th>Location</th><th>Phone</th></tr></thead><tbody>${providers.map(item => `<tr><td>${escapeHtml(item.business || item.name)}</td><td>${escapeHtml(item.email)}</td><td>${escapeHtml(item.service)}</td><td>${escapeHtml(item.location)}</td><td>${escapeHtml(item.phone)}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No provider registrations have been saved in this browser.</div>';
+		}
+		function saveLogin(user) {
+			const logins = storage.get('mtaani-logins', []);
+			logins.unshift({id:`login-${Date.now()}`, name:user.name, email:user.email, role:'admin', at:new Date().toISOString()});
+			storage.set('mtaani-logins', logins.slice(0, 100));
+			storage.set('mtaani-user', user);
+		}
+
+		document.getElementById('login-form').addEventListener('submit', event => {
+			event.preventDefault();
+			const email = document.getElementById('admin-email-input').value.trim().toLowerCase();
+			const password = document.getElementById('admin-password-input').value;
+			if (!ADMIN_EMAILS.includes(email) || password !== DEMO_PASSWORD) {
+				document.getElementById('login-error').textContent = 'Email or password is not authorized for this demo.';
+				return;
+			}
+			const name = email.split('@')[0].replace(/^./, character => character.toUpperCase());
+			const user = {name, email, role:'admin'};
+			saveLogin(user);
+			showDashboard(user);
+		});
+		document.getElementById('logout-button').addEventListener('click', () => {
+			localStorage.removeItem('mtaani-user');
+			document.getElementById('admin-app').hidden = true;
+			document.getElementById('auth-screen').hidden = false;
+			document.getElementById('login-form').reset();
+			document.getElementById('login-error').textContent = '';
+		});
+		document.getElementById('refresh-button').addEventListener('click', () => { renderDashboard(); showToast('Dashboard refreshed.'); });
+		document.getElementById('update-form').addEventListener('submit', event => {
+			event.preventDefault();
+			const form = new FormData(event.currentTarget);
+			const updates = storage.get('mtaani-updates', []);
+			updates.unshift({id:`update-${Date.now()}`, kind:String(form.get('kind')), date:String(form.get('date')), title:String(form.get('title')).trim(), location:String(form.get('location')).trim(), details:String(form.get('details')).trim(), at:new Date().toISOString()});
+			storage.set('mtaani-updates', updates);
+			event.currentTarget.reset();
+			renderDashboard();
+			showToast('Update published for the website.');
+		});
+		document.getElementById('promotion-form').addEventListener('submit', event => {
+			event.preventDefault();
+			const form = new FormData(event.currentTarget);
+			const provider = storage.get('mtaani-providers', []).find(item => item.id === String(form.get('providerId')));
+			if (!provider) { showToast('Register the provider before creating a promotion.'); return; }
+			const promotions = storage.get('mtaani-promotions', []);
+			promotions.unshift({id:`promotion-${Date.now()}`, providerId:provider.id, skill:String(form.get('skill')).trim(), title:String(form.get('title')).trim(), details:String(form.get('details')).trim(), expiresAt:String(form.get('expiresAt')), active:true, createdAt:new Date().toISOString()});
+			storage.set('mtaani-promotions', promotions);
+			event.currentTarget.reset();
+			renderDashboard();
+			showToast('Provider promotion published on the homepage.');
+		});
+		document.getElementById('admin-app').addEventListener('click', event => {
+			const reviewButton = event.target.closest('[data-review]');
+			const deleteButton = event.target.closest('[data-delete-update]');
+			const togglePromotion = event.target.closest('[data-toggle-promotion]');
+			const deletePromotion = event.target.closest('[data-delete-promotion]');
+			const approveSkill = event.target.closest('[data-approve-skill]');
+			const rejectSkill = event.target.closest('[data-reject-skill]');
+			if (reviewButton) {
+				const messages = storage.get('mtaani-messages', []).map(item => item.id === reviewButton.dataset.review ? {...item, reviewed:true} : item);
+				storage.set('mtaani-messages', messages);
+				renderDashboard();
+			}
+			if (deleteButton) {
+				storage.set('mtaani-updates', storage.get('mtaani-updates', []).filter(item => item.id !== deleteButton.dataset.deleteUpdate));
+				renderDashboard();
+				showToast('Update deleted.');
+			}
+			if (togglePromotion) {
+				const promotions = storage.get('mtaani-promotions', []).map(item => item.id === togglePromotion.dataset.togglePromotion ? {...item, active:!item.active} : item);
+				storage.set('mtaani-promotions', promotions);
+				renderDashboard();
+			}
+			if (deletePromotion) {
+				storage.set('mtaani-promotions', storage.get('mtaani-promotions', []).filter(item => item.id !== deletePromotion.dataset.deletePromotion));
+				renderDashboard();
+				showToast('Provider promotion removed.');
+			}
+			if (approveSkill) {
+				const submissions = storage.get('mtaani-skill-submissions', []);
+				const submission = submissions.find(item => item.id === approveSkill.dataset.approveSkill && item.status === 'pending');
+				if (!submission) return;
+				const providers = storage.get('mtaani-providers', []);
+				let provider = providers.find(item => item.email.toLowerCase() === submission.email.toLowerCase());
+				if (provider) Object.assign(provider, {name:submission.name, business:submission.business, service:submission.service, location:submission.location, phone:submission.phone, description:submission.details});
+				else {
+					provider = {id:submission.providerId, name:submission.name, business:submission.business, service:submission.service, location:submission.location, phone:submission.phone, email:submission.email, description:submission.details, rating:'', reviews:0, verified:false, image:'photo-1621905251189-08b45d6a269e'};
+					providers.push(provider);
+				}
+				const promotions = storage.get('mtaani-promotions', []).filter(item => item.providerId !== provider.id);
+				promotions.unshift({id:`promotion-${Date.now()}`, providerId:provider.id, skill:submission.skill, title:submission.title, details:submission.details, expiresAt:submission.expiresAt, active:true, createdAt:new Date().toISOString()});
+				storage.set('mtaani-skill-submissions', submissions.map(item => item.id === submission.id ? {...item, status:'approved', reviewedAt:new Date().toISOString()} : item));
+				storage.set('mtaani-providers', providers);
+				storage.set('mtaani-promotions', promotions);
+				renderDashboard();
+				showToast('Skills profile approved and published on the homepage.');
+			}
+			if (rejectSkill) {
+				const submissions = storage.get('mtaani-skill-submissions', []).map(item => item.id === rejectSkill.dataset.rejectSkill && item.status === 'pending' ? {...item, status:'rejected', reviewedAt:new Date().toISOString()} : item);
+				storage.set('mtaani-skill-submissions', submissions);
+				renderDashboard();
+				showToast('Skills profile rejected and kept off the website.');
+			}
+		});
+		document.querySelectorAll('[data-section]').forEach(link => link.addEventListener('click', () => {
+			document.querySelectorAll('[data-section]').forEach(item => item.classList.toggle('active', item === link));
+		}));
+		window.addEventListener('storage', renderDashboard);
+
+		const activeUser = storage.get('mtaani-user', null);
+		if (activeUser && ADMIN_EMAILS.includes(String(activeUser.email).toLowerCase()) && activeUser.role === 'admin') showDashboard(activeUser);
+	</script>
+</body>
+</html>
