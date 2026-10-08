@@ -9,12 +9,36 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 	<style>
-		:root{--ink:#202821;--muted:#68716a;--paper:#f7f6f1;--white:#fff;--line:#e5e7df;--green:#235a43;--deep:#194530;--lime:#d9e89a;--coral:#df735c;--red:#a13b31;--shadow:0 18px 48px rgba(34,45,36,.09)}
-		*{box-sizing:border-box}[hidden]{display:none !important}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.55 'DM Sans',sans-serif}button,input,select,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{color:inherit}h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:0}.shell{width:min(1360px,calc(100% - 36px));margin:auto}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid transparent;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}.button:hover{transform:translateY(-1px)}.primary{color:var(--deep);background:var(--lime)}.primary:hover{background:#e6efbd}.quiet{border-color:var(--line);background:#fff}.quiet:hover{border-color:#aab8a8}.danger{border-color:#e7c9c5;color:var(--red);background:#fff}.button.small{min-height:31px;padding:0 9px;font-size:11px}
-		.auth-screen{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#194530,#235a43 62%,#54734e)}.auth-box{width:min(440px,100%);padding:31px;border:1px solid rgba(255,255,255,.4);border-radius:9px;background:#fff;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:10px;margin-bottom:29px}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;color:var(--deep);background:var(--lime);font:800 16px 'Manrope',sans-serif}.brand-name{font:800 13px/1.2 'Manrope',sans-serif}.brand-name span{display:block;color:var(--green)}.eyebrow{color:var(--green);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.auth-box h1{margin:7px 0;font-size:29px}.auth-box>p{margin:0 0 22px;color:var(--muted);font-size:13px}.field{margin:14px 0}.field label{display:block;margin-bottom:5px;color:#4b554c;font-size:11px;font-weight:700}.field input,.field select,.field textarea{width:100%;min-height:41px;padding:9px 11px;border:1px solid #dfe2d9;border-radius:5px;background:#fff;outline:none;font-size:13px}.field textarea{min-height:94px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#78957c;box-shadow:0 0 0 3px rgba(35,90,67,.1)}.auth-box .button{width:100%;margin-top:7px;min-height:44px;background:var(--green);color:#fff}.auth-box .button:hover{background:var(--deep)}.auth-note{margin-top:16px;padding:12px;border-radius:5px;color:#596257;background:#f0f2e9;font-size:11px}.auth-note strong{color:var(--deep)}.error{min-height:18px;margin:10px 0 0;color:var(--red);font-size:12px}.demo-warning{margin-top:16px;color:#858b83;font-size:10px}
-		.app{min-height:100vh}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 25px;border-bottom:1px solid var(--line);background:#fff}.topbar .brand{margin:0}.topbar .brand-mark{background:var(--green);color:#fff}.topbar .brand-name span{color:var(--green)}.top-actions{display:flex;align-items:center;gap:12px}.admin-email{color:var(--muted);font-size:11px}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 68px)}.sidebar{padding:23px 13px;border-right:1px solid var(--line);background:#fff}.side-caption{padding:0 10px 9px;color:#879087;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.side-nav{display:grid;gap:4px}.side-nav a{display:flex;align-items:center;gap:10px;padding:10px;border-radius:5px;color:#59635b;font-size:12px;font-weight:600}.side-nav a:hover,.side-nav a.active{color:var(--deep);background:#edf2e9}.side-icon{width:20px;text-align:center;font-size:15px}.side-footer{margin:24px 10px 0;padding-top:14px;border-top:1px solid var(--line);color:#858b83;font-size:10px}.workspace{min-width:0;padding:29px clamp(17px,3vw,42px) 55px}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}.page-heading h1{margin:5px 0 4px;font-size:29px}.page-heading p{margin:0;color:var(--muted);font-size:12px}.panel{margin-top:19px;padding:19px;border:1px solid var(--line);border-radius:7px;background:#fff}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 13px}.panel-heading h2{margin:0;font-size:15px}.panel-heading p{margin:3px 0 0;color:var(--muted);font-size:11px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{padding:15px;border:1px solid var(--line);border-radius:6px;background:#fff}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{display:block;margin-top:5px;font:700 24px 'Manrope',sans-serif}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:11px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}td{max-width:320px;overflow-wrap:anywhere}.badge{display:inline-block;padding:3px 7px;border-radius:20px;color:#735a17;background:#f7f0d9;font-size:9px;font-weight:700;white-space:nowrap}.badge.done{color:var(--green);background:#e8f1e7}.empty{padding:22px;color:var(--muted);font-size:12px;text-align:center}.update-form{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}.update-form .full{grid-column:1/-1}.update-form .button{justify-self:start;margin-top:7px}.notice{margin-bottom:17px;padding:10px 12px;border-left:3px solid var(--coral);color:#686f65;background:#fff;font-size:10px}.mobile-menu{display:none}
+		:root{--ink:#202821;
+            --muted:#0e2179;
+            --paper:#ddd4a8;
+            --white:#112dcc;
+            --line:#e7f708;
+            --green:#235a43;
+            --deep:#194530;
+            --lime:#06a844;
+            --coral:#df735c;
+            --red:#4b072f;
+            --shadow:0 18px 48px rgba(34,45,36,.09)}
+		*{box-sizing:border-box}[hidden]
+        {display:none !important}
+        body{margin:0;
+            background:var(--paper);
+            color:var(--ink);
+            font:14px/1.55 'DM Sans',sans-serif}
+            button,input,select,textarea{font:inherit}
+            button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{color:inherit}h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:0}.shell{width:min(1360px,calc(100% - 36px));margin:auto}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid transparent;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}.button:hover{transform:translateY(-1px)}.primary{color:var(--deep);background:var(--lime)}.primary:hover{background:#120fad}.quiet{border-color:var(--line);background:#23c514}.quiet:hover{border-color:#aab8a8}.danger{border-color:#e7c9c5;color:var(--red);background:#25a115}.button.small{min-height:31px;padding:0 9px;font-size:13px}
+		.auth-screen{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#194530,#235a43 62%,#54734e)}.auth-box{width:min(440px,100%);padding:31px;border:1px solid rgba(255,255,255,.4);border-radius:9px;background:#fff;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:10px;margin-bottom:29px}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;color:var(--deep);background:var(--lime);
+            font:800 16px 'Manrope',sans-serif}.brand-name{font:800 13px/1.2 'Manrope',sans-serif}.brand-name span{display:block;color:var(--green)}.eyebrow{color:var(--green);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px}.auth-box h1{margin:7px 0;font-size:29px}.auth-box>p{margin:0 0 22px;color:var(--muted);
+                font-size:13px}.field{margin:14px 0}.field label{display:block;margin-bottom:5px;color:#4b554c;font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;min-height:41px;padding:9px 11px;border:1px solid #dfe2d9;border-radius:5px;background:#1cc7b9;outline:none;font-size:13px}.field textarea{min-height:94px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#78957c;box-shadow:0 0 0 3px rgba(35,90,67,.1)}.auth-box .button{width:100%;margin-top:7px;min-height:44px;background:var(--green);color:#fff}.auth-box .button:hover{background:var(--deep)}.auth-note{margin-top:16px;padding:12px;border-radius:5px;color:#596257;background:#a8ca2a;font-size:13px}.auth-note strong{color:var(--deep)}.error{min-height:18px;margin:10px 0 0;color:var(--red);font-size:12px}.demo-warning{margin-top:16px;color:#62a84a;font-size:10px}
+		.app{min-height:100vh}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 25px;border-bottom:1px solid var(--line);background:#1fbed3}.topbar .brand{margin:0}.topbar .brand-mark{background:var(--green);color:#fff}.topbar .brand-name span{color:var(--green)}.top-actions{display:flex;align-items:center;gap:12px}.admin-email{color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);
+            min-height:calc(100vh - 68px)}.sidebar{padding:23px 13px;border-right:1px solid var(--line);background:#120752}.side-caption{padding:0 10px 9px;color:#879087;font-size:15px;
+                font-weight:800;text-transform:uppercase;letter-spacing:1px}.side-nav{display:grid;gap:4px}.side-nav a{display:flex;align-items:center;gap:10px;padding:10px;border-radius:5px;color:#59635b;font-size:14px;font-weight:600}.side-nav a:hover,.side-nav a.active{color:var(--deep);background:#54a80e}.side-icon{width:20px;text-align:center;font-size:15px}.side-footer{margin:24px 10px 0;padding-top:14px;border-top:1px solid var(--line);color:#858b83;font-size:13px}
+                .workspace{min-width:0;padding:29px clamp(17px,3vw,42px) 55px}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}.page-heading h1{margin:5px 0 4px;font-size:29px}.page-heading p{margin:0;color:var(--muted);font-size:12px}.panel{margin-top:19px;padding:19px;border:1px solid var(--line);border-radius:7px;background:#e65e4d}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 13px}.panel-heading h2{margin:0;font-size:15px}.panel-heading p{margin:3px 0 0;color:var(--muted);font-size:14px}
+                .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{padding:15px;border:1px solid var(--line);border-radius:6px;background:#55909b}.stat small{display:block;color:var(--muted);font-size:13px}
+                .stat strong{display:block;margin-top:5px;font:700 24px 'Manrope',sans-serif}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:11px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}td{max-width:320px;overflow-wrap:anywhere}.badge{display:inline-block;padding:3px 7px;border-radius:20px;color:#735a17;background:#f7f0d9;font-size:13px;font-weight:700;white-space:nowrap}.badge.done{color:var(--green);background:#e8f1e7}.empty{padding:22px;color:var(--muted);font-size:14px;text-align:center}.update-form{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}.update-form .full{grid-column:1/-1}.update-form .button{justify-self:start;margin-top:7px}.notice{margin-bottom:17px;padding:10px 12px;border-left:3px solid var(--coral);color:#091c52;background:#7264c4;font-size:14px}.mobile-menu{display:none}
 		@media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0;padding:9px 12px;border-right:0;border-bottom:1px solid var(--line)}.side-caption,.side-footer{display:none}.side-nav{display:flex;min-width:0;max-width:100%;overflow:auto}.side-nav a{flex:0 0 auto;white-space:nowrap}.workspace{padding-top:22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-		@media(max-width:560px){.shell{width:calc(100% - 22px)}.topbar{height:60px;padding:0 11px}.topbar .brand-name{font-size:11px}.admin-email{display:none}.layout{min-height:calc(100vh - 60px)}.workspace{padding:18px 11px 38px}.page-heading{align-items:flex-start;flex-direction:column}.page-heading h1{font-size:25px}.panel{padding:14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.update-form{grid-template-columns:1fr}.update-form .full{grid-column:auto}.auth-box{padding:23px}.top-actions .button{min-height:35px;padding:0 10px}}
+		@media(max-width:560px){.shell{width:calc(100% - 22px)}.topbar{height:60px;padding:0 11px}.topbar .brand-name{font-size:13px}.admin-email{display:none}.layout{min-height:calc(100vh - 60px)}.workspace{padding:18px 11px 38px}.page-heading{align-items:flex-start;flex-direction:column}.page-heading h1{font-size:25px}.panel{padding:14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.update-form{grid-template-columns:1fr}.update-form .full{grid-column:auto}.auth-box{padding:23px}.top-actions .button{min-height:35px;padding:0 10px}}
 	</style>
 	<style>
 		.auth-box .home-link { margin-top: 10px; border-color: var(--line); color: var(--ink); background: #fff; }
@@ -28,12 +52,12 @@
 			<span class="eyebrow">Administration</span>
 			<h1>Admin dashboard</h1>
 			<p>Sign in to review activity and publish local work updates.</p>
-			<div class="field"><label for="admin-email-input">Admin email</label><input id="admin-email-input" type="email" autocomplete="username" required placeholder="jose@gmail.com"></div>
+			<div class="field"><label for="admin-email-input">Admin email</label><input id="admin-email-input" type="email" autocomplete="username" required placeholder="kimani@gmail.com"></div>
 			<div class="field"><label for="admin-password-input">Password</label><input id="admin-password-input" type="password" autocomplete="current-password" required placeholder="Enter admin password"></div>
 			<button class="button" type="submit">Sign in</button>
 			<a class="button quiet home-link" href="index.html">← Home</a>
 			<p class="error" id="login-error" role="alert"></p>
-			<div class="auth-note">Demo admins: <strong>jose@gmail.com</strong> and <strong>mose@gmail.com</strong><br>Demo password: <strong>Admin@2026</strong></div>
+			<div class="auth-note">Ensure you are an authorised personel </div>
 			<p class="demo-warning">Prototype only: access and records are stored in this browser. Use server-side authentication before production.</p>
 		</form>
 	</main>
@@ -41,7 +65,7 @@
 	<div class="app" id="admin-app" hidden>
 		<header class="topbar">
 			<a class="brand" href="index.html"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a>
-			<div class="top-actions"><span class="admin-email" id="signed-in-email"></span><a class="button quiet" href="index.html">Open website</a><button class="button quiet" id="logout-button" type="button">Sign out</button></div>
+			<div class="top-actions"><span class="admin-email" id="signed-in-email"></span><a class="button quiet" href="index.html">Home</a><button class="button quiet" id="logout-button" type="button">Sign out</button></div>
 		</header>
 		<div class="layout">
 			<aside class="sidebar">
@@ -51,6 +75,7 @@
 					<a href="#signins" data-section="signins"><span class="side-icon">↗</span>Sign-ins</a>
 					<a href="#messages" data-section="messages"><span class="side-icon">✉</span>Messages & requests</a>
 					<a href="#skill-review" data-section="skill-review"><span class="side-icon">♙</span>Skill submissions</a>
+					<a href="#job-postings" data-section="job-postings"><span class="side-icon">▤</span>Posted jobs</a>
 					<a href="#updates" data-section="updates"><span class="side-icon">＋</span>Work & updates</a>
 					<a href="#promotions" data-section="promotions"><span class="side-icon">✦</span>Promote a provider</a>
 					<a href="#providers" data-section="providers"><span class="side-icon">♙</span>Providers</a>
@@ -64,6 +89,7 @@
 				<section class="panel" id="signins"><div class="panel-heading"><div><h2>Recent sign-ins</h2><p>Latest account logins recorded by this browser.</p></div></div><div class="table-wrap" id="login-table"></div></section>
 				<section class="panel" id="messages"><div class="panel-heading"><div><h2>Messages & service requests</h2><p>Customer enquiries submitted through the website.</p></div></div><div class="table-wrap" id="message-table"></div></section>
 				<section class="panel" id="skill-review"><div class="panel-heading"><div><h2>Skills submissions</h2><p>Review a member's details before publishing their profile and promotion.</p></div></div><div class="table-wrap" id="skill-submission-table"></div></section>
+				<section class="panel" id="job-postings"><div class="panel-heading"><div><h2>Posted jobs</h2><p>Review public job posts and remove expired or inappropriate listings.</p></div></div><div class="table-wrap" id="job-table"></div></section>
 				<section class="panel" id="updates"><div class="panel-heading"><div><h2>Post upcoming work or an update</h2><p>Published notices appear in the website's community updates section.</p></div></div>
 					<form class="update-form" id="update-form">
 						<div class="field"><label for="update-kind">Record type</label><select id="update-kind" name="kind" required><option>Upcoming work</option><option>Community update</option></select></div>
@@ -100,6 +126,8 @@
 			get(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
 			set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
 		};
+		let serverApiAvailable = false;
+		let csrfToken = '';
 		let toastTimer;
 
 		function escapeHtml(value = '') {
@@ -111,6 +139,44 @@
 			toast.style.opacity = '1';
 			clearTimeout(toastTimer);
 			toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+		}
+		async function adminApiRequest(action, data) {
+			const headers = {'Content-Type':'application/json'};
+			if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+			const response = await fetch(`api.php?action=${encodeURIComponent(action)}`, {method:data ? 'POST' : 'GET', credentials:'same-origin', headers, body:data ? JSON.stringify(data) : undefined});
+			const result = await response.json();
+			if (!response.ok || !result.ok) throw new Error(result.error || 'The server request failed.');
+			if (result.csrfToken) csrfToken = result.csrfToken;
+			return result;
+		}
+		async function refreshServerDashboard() {
+			const data = await adminApiRequest('admin_dashboard');
+			storage.set('mtaani-logins', data.logins || []);
+			storage.set('mtaani-messages', (data.messages || []).map(item => Object.assign({}, item, {reviewed:item.status !== 'new'})));
+			storage.set('mtaani-skill-submissions', data.skills || []);
+			storage.set('mtaani-providers', data.providers || []);
+			storage.set('mtaani-jobs', data.jobs || []);
+			storage.set('mtaani-promotions', data.promotions || []);
+			storage.set('mtaani-updates', data.updates || []);
+			renderDashboard();
+		}
+		async function initializeAdminApi() {
+			if (location.protocol === 'file:') return;
+			serverApiAvailable = true;
+			try {
+				const session = await adminApiRequest('session');
+				if (!session.user || session.user.role !== 'admin') {
+					localStorage.removeItem('mtaani-user');
+					return;
+				}
+				storage.set('mtaani-user', session.user);
+				document.getElementById('auth-screen').hidden = true;
+				document.getElementById('admin-app').hidden = false;
+				document.getElementById('signed-in-email').textContent = session.user.email;
+				await refreshServerDashboard();
+			} catch (error) {
+				document.getElementById('login-error').textContent = error.message;
+			}
 		}
 		function showDashboard(user) {
 			document.getElementById('auth-screen').hidden = true;
@@ -124,6 +190,7 @@
 			const skillSubmissions = storage.get('mtaani-skill-submissions', []);
 			const updates = storage.get('mtaani-updates', []);
 			const promotions = storage.get('mtaani-promotions', []);
+			const jobs = storage.get('mtaani-jobs', []);
 			const providers = [...storage.get('mtaani-providers', [])];
 			const newMessages = messages.filter(message => !message.reviewed).length;
 			document.getElementById('admin-stats').innerHTML = [
@@ -139,6 +206,7 @@
 			if (providers.some(item => item.id === selectedProvider)) promotionSelect.value = selectedProvider;
 			document.getElementById('promotion-submit').disabled = providers.length === 0;
 			document.getElementById('promotion-table').innerHTML = promotions.length ? `<table><thead><tr><th>Provider</th><th>Skill / job</th><th>Headline</th><th>Until</th><th>Status</th><th></th></tr></thead><tbody>${promotions.map(item => { const provider = providers.find(entry => entry.id === item.providerId); const expired = item.expiresAt && new Date(`${item.expiresAt}T23:59:59`) < new Date(); return `<tr><td>${escapeHtml(provider?.business || provider?.name || 'Provider no longer listed')}</td><td>${escapeHtml(item.skill)}</td><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.expiresAt || 'No end date')}</td><td><span class="badge ${item.active && !expired ? 'done' : ''}">${item.active && !expired ? 'Live' : expired ? 'Expired' : 'Paused'}</span></td><td><button class="button quiet small" type="button" data-toggle-promotion="${escapeHtml(item.id)}">${item.active ? 'Pause' : 'Activate'}</button> <button class="button danger small" type="button" data-delete-promotion="${escapeHtml(item.id)}">Delete</button></td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">No provider promotions yet. Register a provider, then feature their available work here.</div>';
+			document.getElementById('job-table').innerHTML = jobs.length ? `<table><thead><tr><th>Job</th><th>Employer</th><th>Category / type</th><th>Location</th><th>Contact</th><th>Status</th><th></th></tr></thead><tbody>${jobs.map(item => `<tr><td><strong>${escapeHtml(item.title)}</strong><br>${escapeHtml(item.description)}</td><td>${escapeHtml(item.employer)}</td><td>${escapeHtml(item.category)}<br>${escapeHtml(item.type)}</td><td>${escapeHtml(item.location)}</td><td>${escapeHtml(item.phone)}<br>${escapeHtml(item.email)}</td><td>${escapeHtml(item.status || 'published')}</td><td><button class="button danger small" type="button" data-delete-job="${escapeHtml(item.id)}">Remove</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No jobs have been posted.</div>';
 			document.getElementById('provider-table').innerHTML = providers.length ? `<table><thead><tr><th>Provider</th><th>Email</th><th>Service</th><th>Location</th><th>Phone</th></tr></thead><tbody>${providers.map(item => `<tr><td>${escapeHtml(item.business || item.name)}</td><td>${escapeHtml(item.email)}</td><td>${escapeHtml(item.service)}</td><td>${escapeHtml(item.location)}</td><td>${escapeHtml(item.phone)}</td></tr>`).join('')}</tbody></table>` : '<div class="empty">No provider registrations have been saved in this browser.</div>';
 		}
 		function saveLogin(user) {
@@ -148,12 +216,24 @@
 			storage.set('mtaani-user', user);
 		}
 
-		document.getElementById('login-form').addEventListener('submit', event => {
+		document.getElementById('login-form').addEventListener('submit', async event => {
 			event.preventDefault();
 			const email = document.getElementById('admin-email-input').value.trim().toLowerCase();
 			const password = document.getElementById('admin-password-input').value;
+			if (serverApiAvailable) {
+				try {
+					const result = await adminApiRequest('login', {email, password});
+					if (result.user.role !== 'admin') { await adminApiRequest('logout', {}); throw new Error('This account does not have admin access.'); }
+					storage.set('mtaani-user', result.user);
+					document.getElementById('signed-in-email').textContent = result.user.email;
+					document.getElementById('auth-screen').hidden = true;
+					document.getElementById('admin-app').hidden = false;
+					await refreshServerDashboard();
+				} catch (error) { document.getElementById('login-error').textContent = error.message; }
+				return;
+			}
 			if (!ADMIN_EMAILS.includes(email) || password !== DEMO_PASSWORD) {
-				document.getElementById('login-error').textContent = 'Email or password is not authorized for this demo.';
+				document.getElementById('login-error').textContent = 'Email or password is not authorized to sign in as an admin.';
 				return;
 			}
 			const name = email.split('@')[0].replace(/^./, character => character.toUpperCase());
@@ -161,17 +241,32 @@
 			saveLogin(user);
 			showDashboard(user);
 		});
-		document.getElementById('logout-button').addEventListener('click', () => {
+		document.getElementById('logout-button').addEventListener('click', async () => {
+			if (serverApiAvailable) {
+				try { await adminApiRequest('logout', {}); }
+				catch (error) { showToast(error.message); return; }
+			}
+			csrfToken = '';
 			localStorage.removeItem('mtaani-user');
 			document.getElementById('admin-app').hidden = true;
 			document.getElementById('auth-screen').hidden = false;
 			document.getElementById('login-form').reset();
 			document.getElementById('login-error').textContent = '';
 		});
-		document.getElementById('refresh-button').addEventListener('click', () => { renderDashboard(); showToast('Dashboard refreshed.'); });
-		document.getElementById('update-form').addEventListener('submit', event => {
+		document.getElementById('refresh-button').addEventListener('click', async () => {
+			try { if (serverApiAvailable) await refreshServerDashboard(); else renderDashboard(); showToast('Dashboard refreshed.'); }
+			catch (error) { showToast(error.message); }
+		});
+		document.getElementById('update-form').addEventListener('submit', async event => {
 			event.preventDefault();
 			const form = new FormData(event.currentTarget);
+			if (serverApiAvailable) {
+				try {
+					await adminApiRequest('admin_update_create', {kind:String(form.get('kind')), date:String(form.get('date')), title:String(form.get('title')).trim(), location:String(form.get('location')).trim(), details:String(form.get('details')).trim()});
+					event.currentTarget.reset(); await refreshServerDashboard(); showToast('Update published for the website.');
+				} catch (error) { showToast(error.message); }
+				return;
+			}
 			const updates = storage.get('mtaani-updates', []);
 			updates.unshift({id:`update-${Date.now()}`, kind:String(form.get('kind')), date:String(form.get('date')), title:String(form.get('title')).trim(), location:String(form.get('location')).trim(), details:String(form.get('details')).trim(), at:new Date().toISOString()});
 			storage.set('mtaani-updates', updates);
@@ -179,9 +274,16 @@
 			renderDashboard();
 			showToast('Update published for the website.');
 		});
-		document.getElementById('promotion-form').addEventListener('submit', event => {
+		document.getElementById('promotion-form').addEventListener('submit', async event => {
 			event.preventDefault();
 			const form = new FormData(event.currentTarget);
+			if (serverApiAvailable) {
+				try {
+					await adminApiRequest('admin_promotion_create', {providerId:String(form.get('providerId')), skill:String(form.get('skill')).trim(), title:String(form.get('title')).trim(), details:String(form.get('details')).trim(), expiresAt:String(form.get('expiresAt'))});
+					event.currentTarget.reset(); await refreshServerDashboard(); showToast('Provider promotion published on the homepage.');
+				} catch (error) { showToast(error.message); }
+				return;
+			}
 			const provider = storage.get('mtaani-providers', []).find(item => item.id === String(form.get('providerId')));
 			if (!provider) { showToast('Register the provider before creating a promotion.'); return; }
 			const promotions = storage.get('mtaani-promotions', []);
@@ -191,13 +293,32 @@
 			renderDashboard();
 			showToast('Provider promotion published on the homepage.');
 		});
-		document.getElementById('admin-app').addEventListener('click', event => {
+		document.getElementById('admin-app').addEventListener('click', async event => {
 			const reviewButton = event.target.closest('[data-review]');
 			const deleteButton = event.target.closest('[data-delete-update]');
 			const togglePromotion = event.target.closest('[data-toggle-promotion]');
 			const deletePromotion = event.target.closest('[data-delete-promotion]');
 			const approveSkill = event.target.closest('[data-approve-skill]');
 			const rejectSkill = event.target.closest('[data-reject-skill]');
+			const deleteJob = event.target.closest('[data-delete-job]');
+			if (serverApiAvailable) {
+				try {
+					if (reviewButton) await adminApiRequest('admin_message_review', {id:reviewButton.dataset.review});
+					if (deleteButton) await adminApiRequest('admin_update_delete', {id:deleteButton.dataset.deleteUpdate});
+					if (togglePromotion) await adminApiRequest('admin_promotion_toggle', {id:togglePromotion.dataset.togglePromotion});
+					if (deletePromotion) await adminApiRequest('admin_promotion_delete', {id:deletePromotion.dataset.deletePromotion});
+					if (deleteJob) await adminApiRequest('admin_job_delete', {id:deleteJob.dataset.deleteJob});
+					if (approveSkill) await adminApiRequest('admin_skill_review', {id:approveSkill.dataset.approveSkill, status:'approved'});
+					if (rejectSkill) await adminApiRequest('admin_skill_review', {id:rejectSkill.dataset.rejectSkill, status:'rejected'});
+					if (reviewButton || deleteButton || togglePromotion || deletePromotion || deleteJob || approveSkill || rejectSkill) await refreshServerDashboard();
+					return;
+				} catch (error) { showToast(error.message); return; }
+			}
+			if (deleteJob) {
+				storage.set('mtaani-jobs', storage.get('mtaani-jobs', []).filter(item => item.id !== deleteJob.dataset.deleteJob));
+				renderDashboard();
+				showToast('Job removed.');
+			}
 			if (reviewButton) {
 				const messages = storage.get('mtaani-messages', []).map(item => item.id === reviewButton.dataset.review ? {...item, reviewed:true} : item);
 				storage.set('mtaani-messages', messages);
@@ -249,8 +370,12 @@
 		}));
 		window.addEventListener('storage', renderDashboard);
 
-		const activeUser = storage.get('mtaani-user', null);
-		if (activeUser && ADMIN_EMAILS.includes(String(activeUser.email).toLowerCase()) && activeUser.role === 'admin') showDashboard(activeUser);
+		if (location.protocol === 'file:') {
+			const activeUser = storage.get('mtaani-user', null);
+			if (activeUser && ADMIN_EMAILS.includes(String(activeUser.email).toLowerCase()) && activeUser.role === 'admin') showDashboard(activeUser);
+		} else {
+			initializeAdminApi();
+		}
 	</script>
 </body>
 </html>
