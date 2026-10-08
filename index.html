@@ -72,7 +72,7 @@
     .search-field label, .field label { display: block; margin-bottom: 3px; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .75px; }
     .search-field select { width: 100%; min-height: 31px; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; font-weight: 600; }
     .search-box .button { min-width: 105px; }
-    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 17px; color: #717970; font-size: 12px; }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 17px; color: #717970; font-size: 13px; }
     .hero-note strong { color: var(--green); }
     .hero-note-mark { color: var(--coral); font-size: 17px; }
     .hero-visual { min-height: 415px; position: relative; }
@@ -135,6 +135,14 @@
     .profile-promotion { margin: 16px 0; padding: 13px; border-left: 3px solid var(--green); background: #f1f5eb; }
     .profile-promotion strong { display: block; margin-bottom: 4px; color: var(--green-dark); font-size: 13px; }
     .profile-promotion p { margin: 0; color: var(--muted); font-size: 12px; white-space: pre-line; }
+    .job-list { display: grid; gap: 12px; }
+    .job-card { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 18px; align-items: center; padding: 17px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+    .job-title { margin: 0 0 5px; font-size: 16px; }
+    .job-meta { display: flex; flex-wrap: wrap; gap: 8px 15px; color: var(--muted); font-size: 11px; }
+    .job-type { display: inline-block; padding: 3px 7px; border-radius: 4px; color: var(--green-dark); background: var(--green-pale); font-size: 10px; font-weight: 700; }
+    .job-description { margin: 10px 0 0; color: var(--muted); font-size: 12px; white-space: pre-line; }
+    .job-actions { display: flex; gap: 8px; }
+    .job-actions .button { min-height: 38px; font-size: 11px; }
     .empty-state { grid-column: 1 / -1; padding: 42px 20px; border: 1px dashed #bdc8b9; border-radius: 8px; color: var(--muted); background: rgba(255,255,255,.65); text-align: center; }
     .trust-band { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; padding: 36px; border-radius: 9px; color: #fff; background: var(--green-dark); }
     .trust-band h2 { margin: 8px 0 10px; font-size: 27px; }
@@ -242,6 +250,8 @@
       .provider-cover { height: 175px; }
       .profile-cover { height: 175px; }
       .profile-body { padding: 18px; }
+      .job-card { grid-template-columns: 1fr; gap: 13px; }
+      .job-actions .button { flex: 1; }
       .trust-band { grid-template-columns: 1fr; gap: 23px; padding: 24px 20px; }
       .trust-band h2 { font-size: 23px; }
       .trust-list { gap: 13px; }
@@ -273,20 +283,21 @@
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="#home" aria-label="Mtaani Work Connections home" data-view-link="home">
-        <span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span>
+        <span class="brand-mark">M</span><span class="brand-name">MTAANI <span>JOBS CONNECTIONS</span></span>
       </a>
       <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
         <a class="nav-link active" href="#home" data-view-link="home">Home</a>
         <a class="nav-link" href="#find" data-view-link="find">Find a service</a>
+        <a class="nav-link" href="#jobs" data-view-link="jobs">Post a job</a>
         <a class="nav-link" href="#how-it-works" data-scroll-link="how-it-works">How it works</a>
-        <a class="nav-link" href="#contact" data-view-link="contact">Contact</a>
+        <a class="nav-link" href="#contact" data-view-link="contact">Contacts</a>
         <a class="nav-link" href="admindashboard.html">Admin login</a>
       </nav>
       <div class="nav-actions">
         <button class="button button-quiet" type="button" data-view-target="join">List your service</button>
         <button class="button button-primary" type="button" data-view-target="account" id="account-button">Sign in</button>
-      </div>
+      </div>the
     </div>
   </header>
 
@@ -301,7 +312,7 @@
             <form class="search-box" id="hero-search">
               <div class="search-field"><label for="hero-location">Where</label><select id="hero-location" aria-label="Choose your location"></select></div>
               <div class="search-field"><label for="hero-service">What do you need?</label><select id="hero-service" aria-label="Choose a service"></select></div>
-              <button class="button button-primary" type="submit">Find a fundi <span aria-hidden="true">→</span></button>
+              <button class="button button-primary" type="submit">Find the services  <span aria-hidden="true">→</span></button>
             </form>
             <div class="hero-note"><span class="hero-note-mark">✳</span> Local people. Real skills. <strong>One easy search.</strong></div>
           </div>
@@ -336,6 +347,10 @@
         <div class="shell"><div class="section-head"><div><p class="section-kicker">From around the neighbourhood</p><h2 class="section-title" id="updates-title">Upcoming work & community updates</h2></div></div><div class="updates-list" id="public-updates"></div></div>
       </section>
 
+      <section class="section" aria-labelledby="home-jobs-title">
+        <div class="shell"><div class="section-head"><div><p class="section-kicker">Opportunities close to home</p><h2 class="section-title" id="home-jobs-title">Available local jobs</h2></div><a class="text-link" href="#jobs" data-view-link="jobs">Browse jobs or post one →</a></div><div class="job-list" id="home-jobs"></div></div>
+      </section>
+
       <section class="section section-white" id="how-it-works">
         <div class="shell"><div class="trust-band"><div><span class="eyebrow" style="color:var(--lime)"><span class="eyebrow-dot"></span> A little closer to home</span><h2>Good work travels by word of mouth.<br>Now it travels online, too.</h2><p>We make it easier to discover the skilled people already serving your neighbourhood. Connect directly, agree on the details, and keep local work local.</p></div><div class="trust-list"><div class="trust-item"><b>01</b><span>Choose a service and your area</span></div><div class="trust-item"><b>02</b><span>Compare local providers</span></div><div class="trust-item"><b>03</b><span>Call or WhatsApp directly</span></div><div class="trust-item"><b>04</b><span>Agree on the job together</span></div></div></div></div>
       </section>
@@ -343,7 +358,7 @@
     </div>
 
     <section class="view" id="view-find" hidden>
-      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Your next good connection</span><h1>Find a local service</h1><p>Search skilled providers by service, town or neighbourhood. Sample profiles and ratings are demo content; verify provider details before hiring.</p></div></div>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Your next good connection</span><h1>Find a local service</h1><p>Search skilled providers by service, town or neighbourhood.Verify provider details before hiring.</p></div></div>
       <div class="section"><div class="shell">
         <form class="directory-tools" id="directory-search">
           <div class="field"><label for="directory-keyword">Search providers</label><input id="directory-keyword" type="search" placeholder="Name or keyword"></div>
@@ -351,9 +366,29 @@
           <div class="field"><label for="directory-location">Location</label><select id="directory-location"></select></div>
           <button class="button button-primary" type="submit">Search</button>
         </form>
-        <div class="results-line"><span id="results-count">Providers near you</span><span>Demo contact details · verify before hiring</span></div>
+        <div class="results-line"><span id="results-count">Providers near you</span><span>Service contact details · verify before hiring</span></div>
         <div class="providers-grid" id="directory-grid"></div>
       </div></div>
+    </section>
+
+    <section class="view" id="view-jobs" hidden>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Work and opportunity in your mtaa</span><h1>Local jobs board</h1><p>Find available work nearby, or post an opportunity for skilled people in your area. Posts appear immediately and are stored in this site.</p></div></div>
+      <div class="section"><div class="shell">
+        <div class="section-head"><div><p class="section-kicker">For local employers and teams</p><h2 class="section-title">Post an available job</h2></div></div>
+        <form class="form-panel" id="job-form"><div class="form-grid">
+          <div class="field"><label for="job-employer">Employer / contact name</label><input id="job-employer" name="employer" required maxlength="80" placeholder="Your name or business"></div>
+          <div class="field"><label for="job-title">Job title</label><input id="job-title" name="title" required maxlength="100" placeholder="e.g. Shop assistant needed"></div>
+          <div class="field"><label for="job-category">Work category</label><select id="job-category" name="category" required></select></div>
+          <div class="field"><label for="job-type">Job type</label><select id="job-type" name="type" required><option value="">Choose a job type</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Casual / daily work</option><option>Apprenticeship</option></select></div>
+          <div class="field"><label for="job-location">Location</label><select id="job-location" name="location" required></select></div>
+          <div class="field"><label for="job-pay">Pay (optional)</label><input id="job-pay" name="pay" maxlength="60" placeholder="e.g. KSh 800 per day"></div>
+          <div class="field"><label for="job-phone">Contact phone</label><input id="job-phone" name="phone" type="tel" required inputmode="tel" placeholder="07xx xxx xxx"></div>
+          <div class="field"><label for="job-email">Contact email (optional)</label><input id="job-email" name="email" type="email" placeholder="miano@example.com"></div>
+          <div class="field full"><label for="job-description">Job details</label><textarea id="job-description" name="description" required maxlength="1000" placeholder="Describe the work, required skills, hours, and how to apply."></textarea></div>
+          <div class="field full"><label style="display:flex;align-items:flex-start;gap:9px;text-transform:none;letter-spacing:0;font-size:12px;font-weight:500"><input name="consent" type="checkbox" required style="width:auto;min-height:auto;margin-top:3px"> I agree that the employer name and contact details I provide can be displayed publicly with this job.</label></div>
+        </div><button class="button button-primary" type="submit">Post available job →</button></form>
+      </div></div>
+      <div class="section section-white"><div class="shell"><div class="section-head"><div><p class="section-kicker">Opportunities around you</p><h2 class="section-title">Browse available jobs</h2></div><span class="prototype-note" id="job-count"></span></div><div class="job-list" id="jobs-list"></div></div></div>
     </section>
 
     <section class="view" id="view-join" hidden>
@@ -374,7 +409,7 @@
     </section>
 
     <section class="view" id="view-account" hidden>
-      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Welcome to the neighbourhood</span><h1>Your account</h1><p>Sign in to see your local demo dashboard, or create an account to get started.</p></div></div>
+      <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> Welcome to the neighbourhood</span><h1>Your account</h1><p>Sign in to see your account dashboard, or create an account to get started.</p></div></div>
       <div class="section"><div class="shell" style="max-width:560px">
         <form class="form-panel" id="account-form"><h2 id="account-form-title">Sign in</h2><p class="form-subtitle" id="account-form-subtitle">Use your email to access your Mtaani account.</p>
           <div class="form-grid"><div class="field full" id="account-name-field" hidden><label for="account-name">Your name</label><input id="account-name" name="name" autocomplete="name"></div><div class="field full"><label for="account-email">Email address</label><input id="account-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field full"><label for="account-password">Password</label><input id="account-password" name="password" type="password" required autocomplete="current-password" minlength="6" placeholder="At least 6 characters"></div></div>
@@ -409,9 +444,9 @@
           <div class="field"><label for="market-name">Your name</label><input id="market-name" name="name" required maxlength="80"></div>
           <div class="field"><label for="market-business">Business name (optional)</label><input id="market-business" name="business" maxlength="100" placeholder="Your business or trading name"></div>
           <div class="field"><label for="market-service">Service category</label><select id="market-service" name="service" required></select></div>
-          <div class="field"><label for="market-location">Town / neighbourhood</label><select id="market-location" name="location" required></select></div>
+          <div class="field"><label for="market-location">Town / Address</label><select id="market-location" name="location" required></select></div>
           <div class="field full"><label for="market-phone">Phone number</label><input id="market-phone" name="phone" type="tel" required inputmode="tel" placeholder="07xx xxx xxx"></div>
-          <div class="field full"><label for="market-skill">Skill or job you can do</label><input id="market-skill" name="skill" maxlength="80" required placeholder="e.g. House wiring, leak repairs, furniture making"></div>
+          <div class="field full"><label for="market-skill">Skill or job you can do</label><input id="market-skill" name="skill" maxlength="100" required placeholder="e.g. House wiring, leak repairs, furniture making"></div>
           <div class="field full"><label for="market-headline">Short headline</label><input id="market-headline" name="title" maxlength="100" required placeholder="e.g. Available for home repairs this week"></div>
           <div class="field"><label for="market-until">Available until (optional)</label><input id="market-until" name="expiresAt" type="date"></div>
           <div class="field full"><label for="market-details">Work you take on</label><textarea id="market-details" name="details" maxlength="500" required placeholder="Describe your experience, services, and the jobs you are currently available for."></textarea></div>
@@ -423,13 +458,13 @@
     <section class="view" id="view-contact" hidden>
       <div class="page-top"><div class="shell"><span class="eyebrow"><span class="eyebrow-dot"></span> We are happy to help</span><h1>Talk to our team</h1><p>Have a question about finding a service or putting your work online? Send us a note.</p></div></div>
       <div class="section"><div class="shell contact-layout">
-        <div class="contact-details"><h2>Here for your mtaa.</h2><p>We are building a more connected way to find and share local skills across Kenya.</p><div class="contact-method"><small>Email</small>hello@mtaaniwork.co.ke</div><div class="contact-method"><small>WhatsApp</small>+254 700 000 000 <span style="font-size:10px;color:#cfddcf">(demo contact)</span></div><div class="contact-method"><small>Based in</small>Kenya</div></div>
-        <form class="form-panel" id="contact-form"><h2>Send us a message</h2><p class="form-subtitle">Messages are stored in this browser demo for admin review.</p><div class="form-grid"><div class="field"><label for="contact-name">Your name</label><input id="contact-name" required></div><div class="field"><label for="contact-email">Email address</label><input id="contact-email" type="email" required></div><div class="field full"><label for="contact-subject">What is this about?</label><select id="contact-subject"><option>Service request</option><option>Finding a provider</option><option>Listing my business</option><option>Feedback or another question</option></select></div><div class="field full"><label for="contact-message">Your message</label><textarea id="contact-message" required placeholder="How can we help?"></textarea></div></div><button class="button button-primary button-block" type="submit">Send message</button></form>
+        <div class="contact-details"><h2>Here for your mtaa.</h2><p>We are building a more connected way to find and share local skills across Kenya.</p><div class="contact-method"><small>Email</small>hello@mtaaniwork.co.ke</div><div class="contact-method"><small>WhatsApp</small>+254 742093635 <span style="font-size:10px;color:#cfddcf"></span></div><div class="contact-method"><small>Based in</small>Kenya</div></div>
+        <form class="form-panel" id="contact-form"><h2>Send us a message</h2><p class="form-subtitle">Share your feedback or ask us a question.</p><div class="form-grid"><div class="field"><label for="contact-name">Your name</label><input id="contact-name" required></div><div class="field"><label for="contact-email">Email address</label><input id="contact-email" type="email" required></div><div class="field full"><label for="contact-subject">What is this about?</label><select id="contact-subject"><option>Service request</option><option>Finding a provider</option><option>Listing my business</option><option>Feedback or another question</option></select></div><div class="field full"><label for="contact-message">Your message</label><textarea id="contact-message" required placeholder="What would you like to tell us?"></textarea></div></div><button class="button button-primary button-block" type="submit">Send message</button></form>
       </div></div>
     </section>
   </main>
 
-  <footer class="footer"><div class="shell"><div class="footer-main"><div><a class="brand" href="#home" data-view-link="home"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a><p class="footer-brand-copy">Connecting Kenya's neighbourhoods with the skilled people right around the corner.</p></div><div class="footer-links"><a href="#find" data-view-link="find">Find a service</a><a href="#join" data-view-target="join">List your service</a><a href="#contact" data-view-link="contact">Contact us</a><a href="#account" data-view-target="account">My account</a><a href="admindashboard.html">Admin login</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Mtaani Work Connections</span><span class="prototype-note">Early demo · Listings and accounts are stored on this device only</span></div></div></footer>
+  <footer class="footer"><div class="shell"><div class="footer-main"><div><a class="brand" href="#home" data-view-link="home"><span class="brand-mark">M</span><span class="brand-name">MTAANI <span>WORK CONNECTIONS</span></span></a><p class="footer-brand-copy">Connecting Kenya's neighbourhoods with the skilled people right around the corner.</p></div><div class="footer-links"><a href="#find" data-view-link="find">Find a service</a><a href="#join" data-view-target="join">List your service</a><a href="#contact" data-view-link="contact">Contact us</a><a href="#account" data-view-target="account">My account</a><a href="admindashboard.html">Admin login</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Mtaani Work Connections</span><span class="prototype-note">· Listings and accounts are stored on this device only</span></div></div></footer>
   <dialog class="profile-dialog" id="provider-dialog" aria-labelledby="provider-dialog-title"></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -444,17 +479,34 @@
       ['✂️', 'Barbers & salons', 'Barber & salon'], ['📚', 'Tutors', 'Tutor'], ['🚗', 'Mechanics', 'Mechanic'], ['🏠', 'House moving', 'House moving']
     ];
     const starterProviders = [
-      {id:'p1', name:'James Mwangi', business:'James Electrical Services', service:'Electrician', location:'Ongata Rongai', phone:'0712 345 678', email:'james@example.test', description:'Home wiring, lighting installations and electrical repairs.', rating:'4.9', reviews:28, verified:true, image:'photo-1621905251189-08b45d6a269e'},
-      {id:'p2', name:'Peter Kamau', business:'Kamau Plumbing', service:'Plumber', location:'Kiserian', phone:'0722 456 789', email:'peter@example.test', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'},
-      {id:'p3', name:'Mary Wanjiku', business:"Mary's Home Care", service:'Cleaning', location:'Ongata Rongai', phone:'0701 234 567', email:'mary@example.test', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
-      {id:'p4', name:'Brian Otieno', business:'B.O. Auto Care', service:'Mechanic', location:'Ngong', phone:'0798 123 456', email:'brian@example.test', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.7', reviews:16, verified:false, image:'photo-1486262715619-67b85e0b08d3'},
-      {id:'p5', name:'Faith Njeri', business:'Bright Path Tuition', service:'Tutor', location:'Karen', phone:'0718 987 654', email:'faith@example.test', description:'Patient primary school tutoring in maths, English and science.', rating:'5.0', reviews:12, verified:true, image:'photo-1503676260728-1c00da094a0b'},
-      {id:'p6', name:'Kevin Mutua', business:'Mtaa Phone Fix', service:'Phone & computer repair', location:'Nairobi CBD', phone:'0720 333 444', email:'kevin@example.test', description:'Screen replacement, software support and laptop repairs.', rating:'4.8', reviews:22, verified:false, image:'photo-1519389950473-47ba0277781c'}
+      {id:'p1', name:'James Mwangi', business:'James Electrical Services', service:'Electrician', location:'Ongata Rongai', phone:'0757906149', email:'james@example.test', description:'Home wiring, lighting installations and electrical repairs.', rating:'4.9', reviews:28, verified:true, image:'photo-1621905251189-08b45d6a269e'},
+      {id:'p2', name:'Peter Kamau', business:'Kamau Plumbing', service:'Plumber', location:'Kiserian', phone:'0757906149', email:'peter@example.test', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'},
+      {id:'p3', name:'Mary Wanjiku', business:"Mary's Home Care", service:'Cleaning', location:'OLkalau', phone:'0757904149', email:'mary@example.test', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
+      {id:'p4', name:'Brian Otieno', business:'B.O. Auto Care', service:'Mechanic', location:'Ngong', phone:'0757906149', email:'otieno@gmail.com', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.7', reviews:16, verified:false, image:'photo-1486262715619-67b85e0b08d3'},
+      {id:'p5', name:'Faith Njeri', business:'Bright Path Tuition', service:'Tutor', location:'Karen', phone:'0757906149', email:'njeri@gmail.com', description:'Patient primary school tutoring in maths, English and science.', rating:'5.0', reviews:12, verified:true, image:'photo-1503676260728-1c00da094a0b'},
+
+      {id:'p6', name:'Grace Achieng', business:'Grace Salon', service:'Barber & salon', location:'Nairobi CBD', phone:'0757906149', email:'grace@gmail.com', description:'Professional hairdressing and beauty services.', rating:'4.8', reviews:25, verified:true, image:'photo-1519389950473-47ba0277781c'},
+        {id:'p7', name:'Samuel Kimani', business:'Kimani Movers', service:'House moving', location:'Kitengela', phone:'0757906149', email:'samuel@gmail.com', description:'Reliable house moving and storage services.', rating:'4.6', reviews:20, verified:true, image:'photo-1556911259-08c7a0b3a8d4'},
+        {id:'p8', name:'Alice Wambui', business:'Wambui Cleaning Services', service:'Cleaning', location:'Thika', phone:'0757906149', email:'alice@gmail.com', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
+        {id:'p9', name:'David Ochieng', business:'Ochieng Auto Repairs', service:'Mechanic', location:'Mombasa', phone:'0757906149', email:'david@gmail.com', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.5', reviews:14, verified:false, image:'photo-1556911259-08c7a0b3a8d4'},
+        {id:'p10', name:'Linda Akinyi', business:'Akinyi Plumbing', service:'Plumber', location:'Ongata Rongai', phone:'0757906149', email:'linda@gmail.com', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'},
+        {id:'p11', name:'Michael Otieno', business:'Otieno Electrical Services', service:'Electrician', location:'Kiserian', phone:'0757906149', email:'michael@gmail.com', description:'Home wiring, lighting installations and electrical repairs.', rating:'4.9', reviews:28, verified:true, image:'photo-1621905251189-08b45d6a269e'},
+        {id:'p12', name:'Susan Njeri', business:'Njeri Tuition', service:'Tutor', location:'Karen', phone:'0757906149', email:'susan@gmail.com', description:'Patient primary school tutoring in maths, English and science.', rating:'4.8', reviews:22, verified:true, image:'photo-1503676260728-1c00da094a0b'},
+        {id:'p13', name:'Peter Mwangi', business:'Mwangi Plumbing', service:'Plumber', location:'Ngong', phone:'0757906149', email:'peter@gmail.com', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'},
+        {id:'p14', name:'Grace Wanjiku', business:'Wanjiku Cleaning Services', service:'Cleaning', location:'Nairobi CBD', phone:'0757906149', email:'grace@gmail.com', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
+        {id:'p15', name:'Brian Kimani', business:'Kimani Auto Care', service:'Mechanic', location:'Kitengela', phone:'0757906149', email:'brian@gmail.com', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.6', reviews:18, verified:true, image:'photo-1556911259-08c7a0b3a8d4'},
+        {id:'p16', name:'Faith Achieng', business:'Achieng Salon', service:'Barber & salon', location:'Thika', phone:'0757906149', email:'faith@gmail.com', description:'Professional hairdressing and beauty services.', rating:'4.8', reviews:25, verified:true, image:'photo-1519389950473-47ba0277781c'},
+        {id:'p17', name:'Samuel Otieno', business:'Heha Movers', service:'House moving', location:'Mombasa', phone:'0757906149', email:'samuel@gmail.com', description:'Reliable house moving and storage services.', rating:'4.6', reviews:20, verified:true, image:'photo-1556911259-08c7a0b3a8d4'},
+        {id:'p18', name:'Alice Njeri', business:'Njeri Cleaning Services', service:'Cleaning', location:'Ongata Rongai', phone:'0757906149', email:'alice@gmail.com', description:'Reliable home and office cleaning, with flexible bookings.', rating:'4.9', reviews:34, verified:true, image:'photo-1581578731548-c64695cc6952'},
+        {id:'p19', name:'David Kimani', business:'Kimani Auto Repairs', service:'Mechanic', location:'Kiserian', phone:'0757906149', email:'david@gmail.com', description:'Vehicle diagnostics, servicing and roadside assistance.', rating:'4.5', reviews:14, verified:false, image:'photo-1556911259-08c7a0b3a8d4'},
+        {id:'p20', name:'Linda Achieng', business:'Achieng Plumbing', service:'Plumber', location:'Karen', phone:'0757906149', email:'linda@gmail.com', description:'Leak repairs, taps, drainage and bathroom installations.', rating:'4.8', reviews:19, verified:true, image:'photo-1607472586893-edb57bdc0e39'}
     ];
     const storage = {
       get(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
       set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
     };
+    let serverApiAvailable = false;
+    let csrfToken = '';
     let providers = [...starterProviders, ...storage.get('mtaani-providers', [])];
     let currentUser = storage.get('mtaani-user', null);
     let signupMode = false;
@@ -466,6 +518,47 @@
     function imageUrl(id, width=750) { return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`; }
     function fillSelect(select, values, placeholder) {
       select.innerHTML = `<option value="">${escapeHtml(placeholder)}</option>` + values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');
+    }
+    async function apiRequest(action, data=null) {
+      const headers = {'Content-Type':'application/json'};
+      if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+      const response = await fetch(`api.php?action=${encodeURIComponent(action)}`, {method:data ? 'POST' : 'GET', credentials:'same-origin', headers, body:data ? JSON.stringify(data) : undefined});
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || 'The server request failed.');
+      if (result.csrfToken) csrfToken = result.csrfToken;
+      return result;
+    }
+    async function loadServerSnapshot() {
+      const result = await apiRequest('public_snapshot');
+      storage.set('mtaani-providers', result.providers || []);
+      storage.set('mtaani-jobs', result.jobs || []);
+      storage.set('mtaani-promotions', result.promotions || []);
+      storage.set('mtaani-updates', result.updates || []);
+      providers = [...starterProviders, ...(result.providers || [])];
+      renderProviders('featured-grid', providers.slice(0, 3));
+      renderDirectory();
+      renderPromotions();
+      renderUpdates();
+      renderJobs();
+    }
+    async function initializeServerSession() {
+      if (location.protocol === 'file:') return;
+      serverApiAvailable = true;
+      const requestedView = location.hash.slice(1);
+      currentUser = null;
+      localStorage.removeItem('mtaani-user');
+      document.getElementById('account-button').textContent = 'Sign in';
+      if (requestedView === 'dashboard' || requestedView === 'market') setView('account', false);
+      try {
+        const session = await apiRequest('session');
+        currentUser = session.user || null;
+        if (currentUser) storage.set('mtaani-user', currentUser);
+        document.getElementById('account-button').textContent = currentUser ? 'My dashboard' : 'Sign in';
+        if (currentUser && (requestedView === 'dashboard' || requestedView === 'market')) setView(requestedView, false);
+        await loadServerSnapshot();
+      } catch (error) {
+        console.warn('Mtaani server API is unavailable; using browser demo data.', error.message);
+      }
     }
     function toast(message) {
       const box = document.getElementById('toast'); box.textContent = message; box.classList.add('show');
@@ -480,6 +573,17 @@
       const updates = storage.get('mtaani-updates', []);
       const root = document.getElementById('public-updates');
       root.innerHTML = updates.length ? updates.map(item => `<article class="update-row"><div class="update-date">${escapeHtml(item.date ? new Date(`${item.date}T00:00:00`).toLocaleDateString() : 'Date to be confirmed')}${item.location ? `<br>${escapeHtml(item.location)}` : ''}</div><div><span class="update-kind">${escapeHtml(item.kind)}</span><h3 style="margin:0 0 5px;font-size:15px">${escapeHtml(item.title)}</h3><p style="margin:0;color:var(--muted);font-size:12px">${escapeHtml(item.details)}</p></div><span class="status-pill">${item.kind === 'Upcoming work' ? 'Upcoming' : 'Update'}</span></article>`).join('') : '<div class="empty-state">No work or community updates have been posted yet.</div>';
+    }
+    function renderJobs() {
+      const jobs = storage.get('mtaani-jobs', []).filter(job => !job.expiresAt || new Date(`${job.expiresAt}T23:59:59`) >= new Date());
+      const renderJobCard = job => {
+        const phone = job.phone.replace(/[^\d+]/g, '');
+        const whatsapp = phone.startsWith('+') ? phone.slice(1) : phone.startsWith('0') ? `254${phone.slice(1)}` : phone;
+        return `<article class="job-card"><div><h3 class="job-title">${escapeHtml(job.title)}</h3><div class="job-meta"><strong>${escapeHtml(job.employer)}</strong><span class="job-type">${escapeHtml(job.type)}</span><span>${escapeHtml(job.category)}</span><span>⌖ ${escapeHtml(job.location)}</span>${job.pay ? `<span>${escapeHtml(job.pay)}</span>` : ''}</div><p class="job-description">${escapeHtml(job.description)}</p></div><div class="job-actions"><a class="button button-primary" href="tel:${escapeHtml(phone)}">Call</a><a class="button button-quiet" href="https://wa.me/${escapeHtml(whatsapp)}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>${job.email ? `<a class="button button-quiet" href="mailto:${escapeHtml(job.email)}?subject=${encodeURIComponent(`Application: ${job.title}`)}">Email</a>` : ''}</div></article>`;
+      };
+      document.getElementById('home-jobs').innerHTML = jobs.length ? jobs.slice(0, 3).map(renderJobCard).join('') : '<div class="empty-state">No jobs posted yet. Have work available? <a class="text-link" href="#jobs" data-view-link="jobs">Post the first opportunity →</a></div>';
+      document.getElementById('jobs-list').innerHTML = jobs.length ? jobs.map(renderJobCard).join('') : '<div class="empty-state">No available jobs yet. Use the form above to post an opportunity.</div>';
+      document.getElementById('job-count').textContent = `${jobs.length} available ${jobs.length === 1 ? 'job' : 'jobs'}`;
     }
     function renderPromotions() {
       const now = new Date();
@@ -564,7 +668,7 @@
       } else if (currentUser.role === 'provider' && ownListing) {
         document.getElementById('dashboard-content').innerHTML = `<table><thead><tr><th>Business</th><th>Service</th><th>Location</th><th>Contact</th><th>Status</th></tr></thead><tbody><tr><td>${escapeHtml(ownListing.business || ownListing.name)}</td><td>${escapeHtml(ownListing.service)}</td><td>${escapeHtml(ownListing.location)}</td><td>${escapeHtml(ownListing.phone)}</td><td><span class="status-pill">Local demo listing</span></td></tr></tbody></table>`;
       } else {
-        document.getElementById('dashboard-content').innerHTML = '<p style="margin:0;color:var(--muted);font-size:12px">Browse local providers and contact them directly by phone or WhatsApp. Booking and payments are not enabled in this demo.</p><button class="button button-primary" style="margin-top:15px" data-view-target="find">Browse services →</button>';
+        document.getElementById('dashboard-content').innerHTML = '<p style="margin:0;color:var(--muted);font-size:12px">Browse local providers and contact them directly by phone or WhatsApp. Booking and payments are not enabled in this site.</p><button class="button button-primary" style="margin-top:15px" data-view-target="find">Browse services →</button>';
       }
       if (!isAdmin) {
         const hasPendingSubmission = storage.get('mtaani-skill-submissions', []).some(item => item.email.toLowerCase() === currentUser.email.toLowerCase() && item.status === 'pending');
@@ -602,12 +706,16 @@
       fillSelect(document.getElementById('provider-location'), locations, 'Choose an area');
       fillSelect(document.getElementById('market-service'), services, 'Choose a service');
       fillSelect(document.getElementById('market-location'), locations, 'Choose an area');
+      fillSelect(document.getElementById('job-category'), services, 'Choose a category');
+      fillSelect(document.getElementById('job-location'), locations, 'Choose a location');
       document.getElementById('category-grid').innerHTML = categoryData.map(([icon, label, service]) => `<button class="category-tile" type="button" data-category="${escapeHtml(service)}"><span class="category-icon" aria-hidden="true">${icon}</span><strong>${escapeHtml(label)}</strong><small>Find a local pro →</small></button>`).join('');
       refreshProviderData();
       renderUpdates();
+      renderJobs();
       if (currentUser) document.getElementById('account-button').textContent = 'My dashboard';
       const initial = location.hash.slice(1);
-      if (['find','join','market','account','dashboard','contact'].includes(initial)) setView(initial, false);
+      if (['find','join','market','jobs','account','dashboard','contact'].includes(initial)) setView(initial, false);
+      initializeServerSession();
     }
 
     document.addEventListener('click', event => {
@@ -632,22 +740,51 @@
       document.getElementById('directory-service').value = document.getElementById('hero-service').value; setView('find'); renderDirectory();
     });
     document.getElementById('directory-search').addEventListener('submit', event => { event.preventDefault(); renderDirectory(); });
+    document.getElementById('job-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const phone = String(form.get('phone')).trim();
+      if (!/^(?:\+?254|0)\d{9}$/.test(phone.replace(/[\s()-]/g, ''))) { toast('Enter a valid Kenyan phone number, for example 0712 345 678.'); return; }
+      const job = {employer:String(form.get('employer')).trim(), title:String(form.get('title')).trim(), category:String(form.get('category')), type:String(form.get('type')), location:String(form.get('location')), pay:String(form.get('pay')).trim(), phone, email:String(form.get('email')).trim(), description:String(form.get('description')).trim(), contactPublic:Boolean(form.get('consent'))};
+      if (serverApiAvailable) {
+        try { await apiRequest('job_create', job); await loadServerSnapshot(); }
+        catch (error) { toast(error.message); return; }
+      } else {
+        const jobs = storage.get('mtaani-jobs', []);
+        jobs.unshift({...job, id:`job-${Date.now()}`, postedAt:new Date().toISOString()});
+        storage.set('mtaani-jobs', jobs);
+        renderJobs();
+      }
+      event.currentTarget.reset();
+      toast(serverApiAvailable ? 'Your job is saved to the Mtaani database.' : 'Your job is now listed in this site.');
+      document.getElementById('jobs-list').scrollIntoView({behavior:'smooth',block:'start'});
+    });
     ['directory-keyword','directory-service','directory-location'].forEach(id => document.getElementById(id).addEventListener(id === 'directory-keyword' ? 'input' : 'change', renderDirectory));
     document.getElementById('provider-form').addEventListener('submit', event => {
+      if (serverApiAvailable) { event.preventDefault(); toast('Create or sign in to your account, then use Market my skills to submit your profile for review.'); setView('account'); return; }
       event.preventDefault(); const form = new FormData(event.currentTarget); const phone = String(form.get('phone')).trim();
       if (!/^(?:\+?254|0)\d{9}$/.test(phone.replace(/[\s()-]/g, ''))) { toast('Enter a valid Kenyan phone number, for example 0712 345 678.'); return; }
       const provider = {id:`user-${Date.now()}`, name:String(form.get('name')).trim(), business:String(form.get('business')).trim(), service:String(form.get('service')), location:String(form.get('location')), phone, email:String(form.get('email')).trim(), description:String(form.get('description')).trim(), rating:'', reviews:0, verified:false, image:'photo-1621905251189-08b45d6a269e'};
       const saved = storage.get('mtaani-providers', []); saved.push(provider); storage.set('mtaani-providers', saved);
       const users = storage.get('mtaani-users', []); let account = users.find(item => item.email.toLowerCase() === provider.email.toLowerCase());
       if (!account) { account = {name:provider.name, email:provider.email, password:'', role:'provider'}; users.push(account); storage.set('mtaani-users', users); }
-      persistUser({name:account.name, email:account.email, role:'provider'}); refreshProviderData(); event.currentTarget.reset(); toast('Your listing is ready in this browser demo.'); setView('dashboard');
+      persistUser({name:account.name, email:account.email, role:'provider'}); refreshProviderData(); event.currentTarget.reset(); toast('Your listing is ready in this site.'); setView('dashboard');
     });
-    document.getElementById('market-skills-form').addEventListener('submit', event => {
+    document.getElementById('market-skills-form').addEventListener('submit', async event => {
       event.preventDefault();
       if (!currentUser || currentUser.role === 'admin') { toast('Sign in with a customer or provider account to submit your skills.'); setView(currentUser ? 'dashboard' : 'account'); return; }
       const form = new FormData(event.currentTarget);
       const phone = String(form.get('phone')).trim();
       if (!/^(?:\+?254|0)\d{9}$/.test(phone.replace(/[\s()-]/g, ''))) { toast('Enter a valid Kenyan phone number, for example 0712 345 678.'); return; }
+      if (serverApiAvailable) {
+        try {
+          await apiRequest('skill_submit', {business:String(form.get('business')).trim(), service:String(form.get('service')), location:String(form.get('location')), phone, skill:String(form.get('skill')).trim(), title:String(form.get('title')).trim(), expiresAt:String(form.get('expiresAt')), details:String(form.get('details')).trim()});
+          event.currentTarget.reset();
+          toast('Your skills profile is sent to the admin for review.');
+          setView('dashboard');
+        } catch (error) { toast(error.message); }
+        return;
+      }
       const submissions = storage.get('mtaani-skill-submissions', []);
       if (submissions.some(item => item.email.toLowerCase() === currentUser.email.toLowerCase() && item.status === 'pending')) { toast('You already have a skills profile awaiting review.'); return; }
       const existing = providers.find(provider => provider.email.toLowerCase() === currentUser.email.toLowerCase());
@@ -655,7 +792,7 @@
       storage.set('mtaani-skill-submissions', submissions);
       event.currentTarget.reset();
       renderDashboard();
-      toast('Your skills profile was sent to the admin for review.');
+      toast('Your skills profile is sent to the admin for review.');
       setView('dashboard');
     });
     document.getElementById('account-toggle').addEventListener('click', () => {
@@ -666,35 +803,58 @@
       document.getElementById('account-name-field').hidden = !signupMode;
       document.getElementById('account-password').autocomplete = signupMode ? 'new-password' : 'current-password';
     });
-    document.getElementById('account-form').addEventListener('submit', event => {
+    document.getElementById('account-form').addEventListener('submit', async event => {
       event.preventDefault(); const email = document.getElementById('account-email').value.trim().toLowerCase();
       const password = document.getElementById('account-password').value;
+      if (serverApiAvailable) {
+        try {
+          let result;
+          if (signupMode) result = await apiRequest('register', {name:document.getElementById('account-name').value.trim(), email, password});
+          else result = await apiRequest('login', {email, password});
+          currentUser = result.user;
+          storage.set('mtaani-user', currentUser);
+          document.getElementById('account-button').textContent = 'My dashboard';
+          toast(signupMode ? 'Your account is ready.' : 'Welcome back.');
+          setView('dashboard');
+        } catch (error) { toast(error.message); }
+        return;
+      }
       const users = storage.get('mtaani-users', []);
       if (adminEmails.includes(email)) {
         if (password !== demoAdminPassword) { toast('Use the demo admin password shown on this page.'); return; }
         const name = email.split('@')[0].replace(/^./, character => character.toUpperCase());
-        persistUser({name, email, role:'admin'}); toast('Signed in to the local demo admin dashboard.'); setView('dashboard'); return;
+        persistUser({name, email, role:'admin'}); toast('Signed in to the admin dashboard.'); setView('dashboard'); return;
       }
       if (signupMode) {
         const name = document.getElementById('account-name').value.trim();
         if (!name) { toast('Please enter your name.'); return; }
-        if (users.some(item => item.email.toLowerCase() === email)) { toast('An account with this email already exists.'); return; }
-        users.push({name, email, password, role:'customer'}); storage.set('mtaani-users', users); persistUser({name, email, role:'customer'}); toast('Your local demo account is ready.'); setView('dashboard');
+        if (users.some(item => item.email.toLowerCase() === email)) { toast('An account with this email already exists please log in instead.'); return; }
+        users.push({name, email, password, role:'customer'}); storage.set('mtaani-users', users); persistUser({name, email, role:'customer'}); toast('You have signed in successfully.'); setView('dashboard');
       } else {
         const user = users.find(item => item.email.toLowerCase() === email && item.password === password);
         const provider = storage.get('mtaani-providers', []).find(item => item.email.toLowerCase() === email);
-        if (!user && !provider) { toast('Account not found. Create an account or register as a provider first.'); return; }
+        if (!user && !provider) { toast('Account not found. Create an account or check your email and password.'); return; }
         persistUser({name:user?.name || provider.name, email, role:user?.role || 'provider'}); toast('Welcome back.'); setView('dashboard');
       }
     });
-    document.getElementById('sign-out').addEventListener('click', () => { currentUser = null; localStorage.removeItem('mtaani-user'); document.getElementById('account-button').textContent = 'Sign in'; toast('You have signed out.'); setView('home'); });
-    document.getElementById('contact-form').addEventListener('submit', event => {
+    document.getElementById('sign-out').addEventListener('click', async () => {
+      if (serverApiAvailable && currentUser) { try { await apiRequest('logout', {}); } catch (error) { toast(error.message); return; } }
+      currentUser = null; csrfToken = ''; localStorage.removeItem('mtaani-user'); document.getElementById('account-button').textContent = 'Sign in'; toast('You have signed out.'); setView('home');
+    });
+    document.getElementById('contact-form').addEventListener('submit', async event => {
       event.preventDefault(); const messages = storage.get('mtaani-messages', []);
+      if (serverApiAvailable) {
+        try {
+          await apiRequest('contact_create', {name:document.getElementById('contact-name').value.trim(), email:document.getElementById('contact-email').value.trim(), subject:document.getElementById('contact-subject').value, message:document.getElementById('contact-message').value.trim()});
+          event.currentTarget.reset(); toast('Your message was sent to the Mtaani team.'); return;
+        } catch (error) { toast(error.message); return; }
+      }
       messages.unshift({id:`message-${Date.now()}`, name:document.getElementById('contact-name').value.trim(), email:document.getElementById('contact-email').value.trim(), subject:document.getElementById('contact-subject').value, message:document.getElementById('contact-message').value.trim(), at:new Date().toISOString(), reviewed:false});
-      storage.set('mtaani-messages', messages); event.currentTarget.reset(); toast('Your message is saved for the local demo admin to review.');
+      storage.set('mtaani-messages', messages); event.currentTarget.reset(); toast('Your message is sent for admin review.');
     });
     window.addEventListener('storage', event => {
       if (!event.key || ['mtaani-providers','mtaani-promotions'].includes(event.key)) refreshProviderData();
+      if (!event.key || event.key === 'mtaani-jobs') renderJobs();
     });
     document.getElementById('admin-update-form').addEventListener('submit', event => {
       event.preventDefault(); const form = new FormData(event.currentTarget); const updates = storage.get('mtaani-updates', []);
